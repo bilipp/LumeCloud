@@ -1,0 +1,31 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  // Temporary operator Worker for point-in-time restores. It is NOT part of
+  // the normal deployment: deploy it for a restore, then delete it.
+  // See "PITR restore runbook" in ../README.md.
+  "name": "lume-cloud-admin-staging",
+  "main": "index.ts",
+  "compatibility_date": "2026-10-19",
+  "workers_dev": true,
+  "preview_urls": false,
+  "durable_objects": {
+    "bindings": [
+      // Binds to the AccountDO class owned by the main Worker.
+      { "name": "ACCOUNT", "class_name": "AccountDO", "script_name": "lume-cloud-staging" }
+    ]
+  },
+  "vars": { "DO_JURISDICTION": "eu" },
+  "observability": { "enabled": true, "logs": { "invocation_logs": false } },
+  "env": {
+    "production": {
+      "name": "lume-cloud-admin",
+      "workers_dev": true,
+      "preview_urls": false,
+      "durable_objects": {
+        "bindings": [{ "name": "ACCOUNT", "class_name": "AccountDO", "script_name": "lume-cloud" }]
+      },
+      "vars": { "DO_JURISDICTION": "eu" },
+      "observability": { "enabled": true, "logs": { "invocation_logs": false } }
+    }
+  }
+}

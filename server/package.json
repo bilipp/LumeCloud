@@ -1,0 +1,24 @@
+{
+  "name": "lume-cloud-server",
+  "version": "0.1.0",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p test",
+    "types": "wrangler types src/worker-configuration.d.ts --strict-vars=false",
+    "deploy:staging": "wrangler deploy --env staging --var VERSION:$(git rev-parse --short HEAD 2>/dev/null || echo staging)",
+    "deploy:production": "wrangler deploy --env production --var VERSION:$(git describe --tags --always 2>/dev/null || echo production)"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "^1.4.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.12",
+    "wrangler": "^4.151.3"
+  }
+}

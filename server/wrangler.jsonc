@@ -1,0 +1,133 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Top level = local development (`wrangler dev`) and tests. It is never
+  // deployed: deploy with `--env staging` or `--env production`.
+  "name": "lume-cloud-dev",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-19",
+  "upload_source_maps": true,
+  "workers_dev": false,
+  "preview_urls": false,
+
+  // SQLite-backed Durable Objects, declared with the declarative `exports`
+  // field (the successor of the `migrations` array). Every object is
+  // addressed through `namespace.jurisdiction(DO_JURISDICTION)` in code.
+  "exports": {
+    "AccountDO": { "type": "durable-object", "storage": "sqlite" },
+    "PairingDO": { "type": "durable-object", "storage": "sqlite" },
+    "SignupGuardDO": { "type": "durable-object", "storage": "sqlite" }
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "ACCOUNT", "class_name": "AccountDO" },
+      { "name": "PAIRING", "class_name": "PairingDO" },
+      { "name": "SIGNUP_GUARD", "class_name": "SignupGuardDO" }
+    ]
+  },
+
+  // Rate limiting bindings: counters are per Cloudflare location and the
+  // period must be 10 or 60 seconds. namespace_id must be unique per account
+  // (staging and production use different ids so they never share counters).
+  "ratelimits": [
+    { "name": "RL_SIGNUP", "namespace_id": "7101", "simple": { "limit": 5, "period": 60 } },
+    { "name": "RL_PAIRING_CREATE", "namespace_id": "7102", "simple": { "limit": 10, "period": 60 } },
+    { "name": "RL_PAIRING_LOOKUP", "namespace_id": "7103", "simple": { "limit": 10, "period": 60 } },
+    { "name": "RL_ACCOUNT", "namespace_id": "7104", "simple": { "limit": 300, "period": 60 } },
+    { "name": "RL_PAIRING_POLL", "namespace_id": "7105", "simple": { "limit": 120, "period": 60 } }
+  ],
+
+  "vars": {
+    "SIGNUP": "open",
+    "VERSION": "dev",
+    // Local workerd has no jurisdictions; deployed environments use "eu".
+    "DO_JURISDICTION": "none"
+  },
+
+  // Logs only, sampled. Invocation logs are off because they carry request
+  // headers (Authorization) and URLs (pollToken). The Worker writes its own
+  // structured line per request instead (method, route template, status).
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.1,
+    "redact_query_string": true,
+    "logs": { "enabled": true, "head_sampling_rate": 0.1, "invocation_logs": false },
+    "traces": { "enabled": false }
+  },
+
+  "env": {
+    "staging": {
+      "name": "lume-cloud-staging",
+      "workers_dev": false,
+      "preview_urls": false,
+      "routes": [{ "pattern": "cloud-staging.getlume.org", "custom_domain": true }],
+      "exports": {
+        "AccountDO": { "type": "durable-object", "storage": "sqlite" },
+        "PairingDO": { "type": "durable-object", "storage": "sqlite" },
+        "SignupGuardDO": { "type": "durable-object", "storage": "sqlite" }
+      },
+      "durable_objects": {
+        "bindings": [
+          { "name": "ACCOUNT", "class_name": "AccountDO" },
+          { "name": "PAIRING", "class_name": "PairingDO" },
+          { "name": "SIGNUP_GUARD", "class_name": "SignupGuardDO" }
+        ]
+      },
+      "ratelimits": [
+        { "name": "RL_SIGNUP", "namespace_id": "7101", "simple": { "limit": 5, "period": 60 } },
+        { "name": "RL_PAIRING_CREATE", "namespace_id": "7102", "simple": { "limit": 10, "period": 60 } },
+        { "name": "RL_PAIRING_LOOKUP", "namespace_id": "7103", "simple": { "limit": 10, "period": 60 } },
+        { "name": "RL_ACCOUNT", "namespace_id": "7104", "simple": { "limit": 300, "period": 60 } },
+        { "name": "RL_PAIRING_POLL", "namespace_id": "7105", "simple": { "limit": 120, "period": 60 } }
+      ],
+      "vars": {
+        "SIGNUP": "open",
+        "VERSION": "staging",
+        "DO_JURISDICTION": "eu"
+      },
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 1,
+        "redact_query_string": true,
+        "logs": { "enabled": true, "head_sampling_rate": 1, "invocation_logs": false },
+        "traces": { "enabled": false }
+      }
+    },
+    "production": {
+      "name": "lume-cloud",
+      "workers_dev": false,
+      "preview_urls": false,
+      "routes": [{ "pattern": "cloud.getlume.org", "custom_domain": true }],
+      "exports": {
+        "AccountDO": { "type": "durable-object", "storage": "sqlite" },
+        "PairingDO": { "type": "durable-object", "storage": "sqlite" },
+        "SignupGuardDO": { "type": "durable-object", "storage": "sqlite" }
+      },
+      "durable_objects": {
+        "bindings": [
+          { "name": "ACCOUNT", "class_name": "AccountDO" },
+          { "name": "PAIRING", "class_name": "PairingDO" },
+          { "name": "SIGNUP_GUARD", "class_name": "SignupGuardDO" }
+        ]
+      },
+      "ratelimits": [
+        { "name": "RL_SIGNUP", "namespace_id": "7201", "simple": { "limit": 5, "period": 60 } },
+        { "name": "RL_PAIRING_CREATE", "namespace_id": "7202", "simple": { "limit": 10, "period": 60 } },
+        { "name": "RL_PAIRING_LOOKUP", "namespace_id": "7203", "simple": { "limit": 10, "period": 60 } },
+        { "name": "RL_ACCOUNT", "namespace_id": "7204", "simple": { "limit": 300, "period": 60 } },
+        { "name": "RL_PAIRING_POLL", "namespace_id": "7205", "simple": { "limit": 120, "period": 60 } }
+      ],
+      "vars": {
+        "SIGNUP": "open",
+        "VERSION": "production",
+        "DO_JURISDICTION": "eu"
+      },
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 0.05,
+        "redact_query_string": true,
+        "logs": { "enabled": true, "head_sampling_rate": 0.05, "invocation_logs": false },
+        "traces": { "enabled": false }
+      }
+    }
+  }
+}

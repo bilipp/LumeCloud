@@ -1,0 +1,128 @@
+{
+  "format" : "lume-cloud-crypto-vectors",
+  "keys" : {
+    "accountId" : "AAECAwQFBgcICQoLDA0ODw",
+    "authKey" : {
+      "info" : "lume-cloud/v1/auth",
+      "value" : "Wvn4bW0A86n6O6NDhVbKaher7xdHMctYYtNfr-KGkTY"
+    },
+    "authToken" : "Wvn4bW0A86n6O6NDhVbKaher7xdHMctYYtNfr-KGkTY",
+    "authVerifier" : "Xa2C5IEgh90MuDpcLkDA-i46mFdi_kaokB13ETS505I",
+    "authorizationHeader" : "Bearer AAECAwQFBgcICQoLDA0ODw.Wvn4bW0A86n6O6NDhVbKaher7xdHMctYYtNfr-KGkTY",
+    "encKey" : {
+      "info" : "lume-cloud/v1/enc",
+      "value" : "f18CI76RBI0GwrkRzvUTAmFlxasz6lkd0HsHKk3ShOU"
+    },
+    "hkdf" : "HKDF-SHA256, salt = empty, L = 32",
+    "idKey" : {
+      "info" : "lume-cloud/v1/id",
+      "value" : "f11yudjFP1b3yoGlAEH0IEM6iFrBAWwYadfc6qdH-qU"
+    },
+    "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+    "rootKeyHex" : "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+  },
+  "notes" : [
+    "Binary values are base64url without padding unless the field name ends in Hex.",
+    "Derived keys: HKDF-SHA256(IKM = rootKey, salt = empty, info, L = 32).",
+    "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))).",
+    "envelope = base64url(0x01 || nonce || AES-256-GCM(encKey, nonce, canonicalPayload, AAD = UTF8(rid)) || tag).",
+    "canonicalPayload is RFC 8785 (JCS) JSON: keys sorted by UTF-16 code units, ECMAScript number formatting, JSON.stringify string escaping.",
+    "A client MUST skip (and keep) unsupportedEnvelope rather than fail or delete it.",
+    "Pairing: HPKE base mode, DHKEM(X25519, HKDF-SHA256) / HKDF-SHA256 / AES-256-GCM, info and aad = UTF8(code). enc/ciphertext were sealed once with a random ephemeral key; verify by opening, not by re-sealing.",
+    "Recovery key: Crockford base32 of the 256 key bits (big-endian, 4 zero pad bits), plus the Crockford mod-37 check symbol, grouped by 4."
+  ],
+  "pairing" : {
+    "canonicalGrant" : "{\"accountId\":\"AAECAwQFBgcICQoLDA0ODw\",\"rootKey\":\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8\",\"serverURL\":\"https://cloud-staging.getlume.org\"}",
+    "ciphertext" : "9C8THwkQ0r1fFhOAy3hDKaT6irS1eSYEA-NFhVn5zBdgZ5LDT0DC_GJRCx87N2ADbWeJqY2CKQQS_ONZePJKTk2Ix3t9ts56zzPScbdPFVMvs9zATpw_jSeLCEwRb8xnFWlyN8jRdrgA_tl2W08jUkf9DTLLoi-tWQ9LqDRtMWfSeCiVGTG0kzVg8dCioFo1_w8G5NhZRKscerXq32c",
+    "code" : "483920",
+    "enc" : "-M5-79HnI62gmurY3qIzRwbKGtWeWGuKXqxN7z3IOzA",
+    "grant" : {
+      "accountId" : "AAECAwQFBgcICQoLDA0ODw",
+      "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+      "serverURL" : "https://cloud-staging.getlume.org"
+    },
+    "info" : "lume-cloud/v1/pairing",
+    "recipientPrivateKey" : "ICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj8",
+    "recipientPublicKey" : "NYBy1jZYgNGu6jKa35EhODhR7SGijjt16WXQ0s0WYlQ",
+    "suite" : "DHKEM(X25519, HKDF-SHA256) / HKDF-SHA256 / AES-256-GCM"
+  },
+  "records" : [
+    {
+      "canonicalPayload" : "{\"data\":{\"colorRaw\":\"blue\",\"createdAt\":1760000000000,\"id\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"isChild\":true,\"name\":\"Zoë's \\\"Room\\\"\",\"sortOrder\":1,\"symbolName\":\"star.fill\",\"updatedAt\":1760000123456},\"key\":\"profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"type\":\"profile\",\"v\":1}",
+      "envelope" : "AaChoqOkpaanqKmqqx6LLxIUbE5abNmi4jGXsh4pbw4y-m7QxKIzh8VSQMJibg30F0s-CD-4mfXK5sEnMOw9X1nEtx8v_EH6XpBCi5uA9zMH0k0nfqfEhsdZRpX3IkhaIjiX9u6FiuB19Vu-tOa9Wl7VSOJHfXw8X5VOj2MyhQOyEeJGG5GaLKu2ZkIgA0zaRpAb4JhaTmryU-tobl7IDC3RcI53e3HtXIiMt3GLudbKLRM33ywAZrLla3SI9n-NtrwdP7mOyO0TWGOcIaEz2WbF6cvn4RGjlz-X7oGnTU0EqaP48x2jPUvIOePoz4dkpaPKW5shRN6UF0Fu0V2YXpCnt6orfVgUvS0H4nweWf35zBQ_TRB1cc-On6_su1LryFk8qwFIfPtWiZ1yP4Z5z1ZUw1g",
+      "logicalKey" : "profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+      "nonceHex" : "a0a1a2a3a4a5a6a7a8a9aaab",
+      "payload" : {
+        "data" : {
+          "colorRaw" : "blue",
+          "createdAt" : 1760000000000,
+          "id" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "isChild" : true,
+          "name" : "Zoë's \"Room\"",
+          "sortOrder" : 1,
+          "symbolName" : "star.fill",
+          "updatedAt" : 1760000123456
+        },
+        "key" : "profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+        "type" : "profile",
+        "v" : 1
+      },
+      "rid" : "PL16O2-5dNWbrjCBeq5bS6zLK5jgKjVNTfKR_6h2dNI"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"addedToWatchlistDate\":null,\"contentId\":\"movie-1001\",\"customOrder\":null,\"favoriteOrder\":3,\"futureField\":{\"nested\":[\"é\",\"a/b\",\"line\\nbreak\\u0001\",0.00001,1e-7,1e+21]},\"isFavorite\":true,\"isHidden\":false,\"isWatched\":false,\"kindRaw\":\"movie\",\"lastWatchedDate\":1760000200000,\"profileID\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"recommendationVoteRaw\":-1,\"updatedAt\":1760000200000,\"watchProgress\":1234.5},\"key\":\"content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/movie-1001\",\"type\":\"content\",\"v\":1}",
+      "envelope" : "AbCxsrO0tba3uLm6uw2Zk45jxxJhFR7oX1quwTPqIhze7_zur9C5db6snPEtRPF94e-AJ0Ou731Uv7i7E-g2qVikHdcm1Pnk41uxPiSqBCja8W49Lw262iVDVTGUqiMaEq78CAioRPc0shHYoj8HMIFFyL9byTatr27g1BBR2U4hTqvhLMbciic_lMxa6l90oS2HxsxnZBzEZxqJGwe7OABoXwx-li2L6OKW5bi5cj-L4r4K1Y3JfPhcrlxTrp5-srYFMBqQQ4JA4KEZSTQ_zY6HgXZR0NgaVwutsAHT8zZm3r_vdRhKdEINAxMrpE4xF3gfv6ZWcNFXW6JhC8EN0UngLMbG5UxaMPpBrghIwwKTcSslsEbanqFOhw_eyT-OUzxLfOfH4OLK64U4GFWHSRzqfLhrmioVMbXCpmdj9EG2s_vxzWhGvwYrvPQfhfIoXjEAJdD3OnE2dxZQL9v8JWC2P0YVuZAvWxtJDgxw4ae3CMzOKEIqgCR0btWWyeb7IzMxwQ00tgveestUbaymc0KUnPschOmyAOZxdN52ZiEqOtiWzkFAy6U2EVZmFb0cVqgRsJ34RadgtQ6fFg0oxpGGPOS7n9p_jooGVNLHp4MApQ4mgoVmq6EZxniy5-vxGvUDsZpQd8im6yhj9nrhu_DG8s9qpx5TdvkluPWCJL9KA-LCc4Rb7ZJ_Iw",
+      "logicalKey" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/movie-1001",
+      "nonceHex" : "b0b1b2b3b4b5b6b7b8b9babb",
+      "payload" : {
+        "data" : {
+          "addedToWatchlistDate" : null,
+          "contentId" : "movie-1001",
+          "customOrder" : null,
+          "favoriteOrder" : 3,
+          "futureField" : {
+            "nested" : [
+              "é",
+              "a/b",
+              "line\nbreak\u0001",
+              1e-05,
+              1e-07,
+              1e+21
+            ]
+          },
+          "isFavorite" : true,
+          "isHidden" : false,
+          "isWatched" : false,
+          "kindRaw" : "movie",
+          "lastWatchedDate" : 1760000200000,
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "recommendationVoteRaw" : -1,
+          "updatedAt" : 1760000200000,
+          "watchProgress" : 1234.5
+        },
+        "key" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/movie-1001",
+        "type" : "content",
+        "v" : 1
+      },
+      "rid" : "9YJbgtJ3uJSRkKGuR5mt-G4F2HAwwufStcEpn8qwJCw"
+    }
+  ],
+  "recoveryKey" : {
+    "acceptedVariants" : [
+      "000G40R40M30E209185GR38E1W8124GK2GAHC5RR34D1P70X3RFG*",
+      "000g 40r4 0m30 e209 185g r38e 1w81 24gk 2gah c5rr 34d1 p70x 3rfg *",
+      "OOOG-4OR4-OM3O-E2O9-l85G-R38E-lW8l-24GK-2GAH-C5RR-34Dl-P7OX-3RFG-*"
+    ],
+    "rejectedTypos" : [
+      "100G40R40M30E209185GR38E1W8124GK2GAHC5RR34D1P70X3RFG*",
+      "00G040R40M30E209185GR38E1W8124GK2GAHC5RR34D1P70X3RFG*"
+    ],
+    "rendering" : "000G-40R4-0M30-E209-185G-R38E-1W81-24GK-2GAH-C5RR-34D1-P70X-3RFG-*"
+  },
+  "unsupportedEnvelope" : {
+    "envelope" : "AqChoqOkpaanqKmqqx6LLxIUbE5abNmi4jGXsh4pbw4y-m7QxKIzh8VSQMJibg30F0s-CD-4mfXK5sEnMOw9X1nEtx8v_EH6XpBCi5uA9zMH0k0nfqfEhsdZRpX3IkhaIjiX9u6FiuB19Vu-tOa9Wl7VSOJHfXw8X5VOj2MyhQOyEeJGG5GaLKu2ZkIgA0zaRpAb4JhaTmryU-tobl7IDC3RcI53e3HtXIiMt3GLudbKLRM33ywAZrLla3SI9n-NtrwdP7mOyO0TWGOcIaEz2WbF6cvn4RGjlz-X7oGnTU0EqaP48x2jPUvIOePoz4dkpaPKW5shRN6UF0Fu0V2YXpCnt6orfVgUvS0H4nweWf35zBQ_TRB1cc-On6_su1LryFk8qwFIfPtWiZ1yP4Z5z1ZUw1g",
+    "rid" : "PL16O2-5dNWbrjCBeq5bS6zLK5jgKjVNTfKR_6h2dNI",
+    "versionByte" : 2
+  },
+  "version" : 1
+}
