@@ -7,6 +7,7 @@ export type ErrorCode =
 	| "signup_closed"
 	| "account_deleted"
 	| "not_found"
+	| "account_exists"
 	| "pairing_already_sealed"
 	| "resync_required"
 	| "record_too_large"

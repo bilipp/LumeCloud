@@ -5,7 +5,7 @@ import { randomB64url, sha256B64url } from "../src/lib/b64url";
 import worker from "../src/index";
 import { SignupGuardDO } from "../src/do/signup-guard";
 import { signupGuardStub } from "../src/lib/stubs";
-import { BASE, accountDO, bearer, call, newAccount, randomIp, randomUuid } from "./helpers";
+import { BASE, accountDO, bearer, call, newAccount, randomAccountId, randomIp, randomUuid } from "./helpers";
 
 describe("health", () => {
 	it("GET /healthz returns ok and version", async () => {
@@ -30,6 +30,94 @@ describe("accounts", () => {
 		const body = await res.json<Record<string, unknown>>();
 		expect(body).toMatchObject({ accountId: acct.accountId, usedBytes: 0, recordCount: 0, nextSeq: 1 });
 		expect(typeof body["createdAt"]).toBe("number");
+	});
+
+	async function createWith(body: Record<string, unknown>, ip = randomIp()): Promise<Response> {
+		return call("/v1/accounts", { method: "POST", headers: { "cf-connecting-ip": ip }, body: JSON.stringify(body) });
+	}
+
+	it("creates the account under the client-provided id", async () => {
+		const accountId = randomAccountId();
+		const authKey = crypto.getRandomValues(new Uint8Array(32));
+		const res = await createWith({ authVerifier: await sha256B64url(authKey), accountId });
+		expect(res.status).toBe(201);
+		const body = await res.json<Record<string, unknown>>();
+		expect(body["accountId"]).toBe(accountId);
+		expect(typeof body["createdAt"]).toBe("number");
+
+		const me = await call("/v1/accounts/me", {
+			headers: { authorization: bearer(accountId, authKey), "x-lume-device": randomUuid() },
+		});
+		expect(me.status).toBe(200);
+		expect(await me.json()).toMatchObject({ accountId, recordCount: 0 });
+	});
+
+	it("rejects a malformed accountId with 400 and creates nothing", async () => {
+		const authVerifier = await sha256B64url(crypto.getRandomValues(new Uint8Array(32)));
+		const valid = randomAccountId();
+		for (const accountId of [
+			valid.slice(0, 21), // too short
+			`${valid}A`, // too long
+			`${valid.slice(0, 21)}=`, // padding
+			`${valid.slice(0, 21)}+`, // standard base64
+			`${valid.slice(0, 21)}/`,
+			"",
+			42,
+			null,
+			{ id: valid },
+		]) {
+			const res = await createWith({ authVerifier, accountId });
+			expect(res.status, JSON.stringify(accountId)).toBe(400);
+			expect(await res.json()).toMatchObject({ error: "bad_request" });
+		}
+		await runInDurableObject(accountDO(valid.slice(0, 21) + "A"), async (_instance, state) => {
+			expect(state.storage.sql.exec("SELECT name FROM sqlite_master").toArray()).toEqual([]);
+		});
+	});
+
+	it("a second create with the same accountId is 409 account_exists and leaves the account alone", async () => {
+		const accountId = randomAccountId();
+		const authKey = crypto.getRandomValues(new Uint8Array(32));
+		const first = await createWith({ authVerifier: await sha256B64url(authKey), accountId });
+		expect(first.status).toBe(201);
+
+		// Same keys (the normal duplicate) and different keys (a squatter) both conflict.
+		const otherKey = crypto.getRandomValues(new Uint8Array(32));
+		for (const key of [authKey, otherKey]) {
+			const again = await createWith({ authVerifier: await sha256B64url(key), accountId });
+			expect(again.status).toBe(409);
+			expect(await again.json()).toEqual({ error: "account_exists" });
+		}
+
+		const device = randomUuid();
+		const original = await call("/v1/accounts/me", {
+			headers: { authorization: bearer(accountId, authKey), "x-lume-device": device },
+		});
+		expect(original.status).toBe(200);
+		const squatter = await call("/v1/accounts/me", {
+			headers: { authorization: bearer(accountId, otherKey), "x-lume-device": device },
+		});
+		expect(squatter.status).toBe(401);
+	});
+
+	it("a deleted account's id can be created again", async () => {
+		const acct = await newAccount();
+		expect((await call("/v1/accounts/me", { method: "DELETE", headers: acct.headers() })).status).toBe(204);
+		const res = await createWith({ authVerifier: await sha256B64url(acct.authKey), accountId: acct.accountId });
+		expect(res.status).toBe(201);
+		expect(await res.json()).toMatchObject({ accountId: acct.accountId });
+	});
+
+	it("without accountId the server still picks a random id (deprecated fallback)", async () => {
+		const authKey = crypto.getRandomValues(new Uint8Array(32));
+		const res = await createWith({ authVerifier: await sha256B64url(authKey) });
+		expect(res.status).toBe(201);
+		const { accountId } = await res.json<{ accountId: string }>();
+		expect(accountId).toMatch(/^[A-Za-z0-9_-]{22}$/);
+		const me = await call("/v1/accounts/me", {
+			headers: { authorization: bearer(accountId, authKey), "x-lume-device": randomUuid() },
+		});
+		expect(me.status).toBe(200);
 	});
 
 	it("rejects a malformed verifier", async () => {
@@ -180,6 +268,35 @@ describe("signup controls", () => {
 		expect(statuses.slice(0, 5)).toEqual([201, 201, 201, 201, 201]);
 		expect(statuses).toContain(429);
 		expect(Number(retryAfter)).toBeGreaterThan(0);
+	});
+
+	it("the burst limit also covers client-provided ids and duplicates", async () => {
+		const ip = randomIp();
+		const accountId = randomAccountId();
+		const statuses: number[] = [];
+		for (let i = 0; i < 7; i++) {
+			const authKey = crypto.getRandomValues(new Uint8Array(32));
+			const res = await call("/v1/accounts", {
+				method: "POST",
+				headers: { "cf-connecting-ip": ip },
+				body: JSON.stringify({ authVerifier: await sha256B64url(authKey), accountId }),
+			});
+			statuses.push(res.status);
+		}
+		// One create, then duplicates until the limiter kicks in.
+		expect(statuses.slice(0, 5)).toEqual([201, 409, 409, 409, 409]);
+		expect(statuses).toContain(429);
+	});
+
+	it("SIGNUP=invite applies to client-provided ids", async () => {
+		const authKey = crypto.getRandomValues(new Uint8Array(32));
+		const request = new Request(`${BASE}/v1/accounts`, {
+			method: "POST",
+			headers: { "content-type": "application/json", "cf-connecting-ip": randomIp() },
+			body: JSON.stringify({ authVerifier: await sha256B64url(authKey), accountId: randomAccountId() }),
+		});
+		const res = await worker.fetch(request, { ...env, SIGNUP: "invite" });
+		expect(res.status).toBe(403);
 	});
 
 	it("the daily cap allows 10 signups per IP, then refuses until UTC midnight", async () => {

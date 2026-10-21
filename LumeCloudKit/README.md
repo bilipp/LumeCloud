@@ -8,8 +8,11 @@ third-party dependencies.
 - Platforms: iOS 18, tvOS 18, macOS 15, visionOS 2. Swift 6 language mode.
 - The wire contract is [`../spec/PROTOCOL.md`](../spec/PROTOCOL.md). The
   known-answer vectors are in [`../spec/vectors/`](../spec/vectors/README.md).
-- Lume consumes it as a **local package** at `../LumeCloud/Kit` (product
-  `LumeCloudKit`, linked statically), like `../LumeRecorder/Kit`.
+- Lume consumes it as a **local package** at `../LumeCloud/LumeCloudKit` (product
+  `LumeCloudKit`, linked statically), like `../LumeRecorder/Kit`. The folder
+  carries the package name on purpose: Xcode names a local package after its
+  folder, so a second `Kit` folder would collide with LumeRecorder's and one of
+  the two would be dropped silently.
 
 The Kit knows nothing about Lume's SwiftData models and doesn't run the sync
 loop. Mapping models to payloads, the per-record bookkeeping, and the 3-way
@@ -20,13 +23,13 @@ it from a background actor.
 
 | Type | Purpose |
 |---|---|
-| `LumeCloudKeys` | `init(rootKey:)` / `generate()`. Derives `encKey`, `idKey`, `authKey`; provides `authVerifier`, `authToken`, `recordID(for:)`, `seal(_:rid:)`, `open(_:rid:)`, and `seal(_ payload:)` / `openPayload(_:rid:)`. Its description is redacted. |
+| `LumeCloudKeys` | `init(rootKey:)` / `generate()`. Derives `encKey`, `idKey`, `authKey` and the 22-char `accountId`; provides `authVerifier`, `authToken`, `recordID(for:)`, `seal(_:rid:)`, `open(_:rid:)`, and `seal(_ payload:)` / `openPayload(_:rid:)`. Its description is redacted. |
 | `LumeCloudRecoveryKey` | `encode(_:)` / `decode(_:)` / `keys(from:)`: the root key as grouped Crockford base32 with a mod-37 check symbol. |
 | `JSONValue` | Any JSON value. Codable, Hashable, with literals and accessors. `canonicalJSON()` writes RFC 8785 JSON. |
 | `LumeCloudPayload` | `{v, type, key, data}` plus `extra` (unknown top-level fields). `encoded()` is canonical; `decode(_:)` keeps unknown fields. |
 | `LumeCloudPairing`, `LumeCloudGrant`, `SealedGrant` | HPKE handoff of `{accountId, rootKey, serverURL}` to a new device. |
-| `LumeCloudClient` | Every endpoint of §4 plus `events()` (the WebSocket) and `allChanges(since:)`. |
-| `LumeCloudError` | One case per protocol error code, plus `.server`, `.transport`, `.decoding` and `.missingCredentials`. |
+| `LumeCloudClient` | Every endpoint of §4 plus `events()` (the WebSocket) and `allChanges(since:)`. `Credentials(keys:deviceID:)` signs in to the account derived from the keys. |
+| `LumeCloudError` | One case per protocol error code (including `.accountExists`), plus `.server`, `.transport`, `.decoding` and `.missingCredentials`. |
 | `LumeCloudCryptoError` | Local failures: key length, base64url, envelope, recovery key, payload. |
 
 ### Rules the Kit keeps
@@ -48,13 +51,20 @@ it from a background actor.
 ```swift
 import LumeCloudKit
 
-// Create an account on the first device.
+// Create an account on the first device. Its id is keys.accountId, derived
+// from the root key, so the root key (or the recovery key) is all a device needs.
 let keys = LumeCloudKeys.generate()                 // store keys.rootKey in the Keychain
 let anonymous = LumeCloudClient(baseURL: LumeCloudAPI.officialURL, credentials: nil)
-let account = try await anonymous.createAccount(authVerifier: keys.authVerifier)
+_ = try await anonymous.createAccount(keys: keys)   // .accountExists if it already exists
 let deviceID = UUID()
-let client = anonymous.withCredentials(.init(accountId: account.accountId, keys: keys, deviceID: deviceID))
+let client = anonymous.withCredentials(.init(keys: keys, deviceID: deviceID))
 _ = try await client.registerDevice(id: deviceID, name: "Philipp's iPhone", platform: .current)
+
+// Restore on a device that lost everything: the recovery key → keys → account id.
+let restored = try LumeCloudRecoveryKey.keys(from: typedRecoveryKey)
+let freshID = UUID()                                // never reuse an old (possibly revoked) id
+let restoredClient = anonymous.withCredentials(.init(keys: restored, deviceID: freshID))
+_ = try await restoredClient.registerDevice(id: freshID, name: "Philipp's iPhone", platform: .current)
 
 // Push a record.
 let payload = LumeCloudPayload(type: "content", key: "content/\(profileID)/\(contentID)", data: [
@@ -98,7 +108,7 @@ if case let .sealed(sealed) = try await anonymous.pairingResult(code: ticket.cod
 
 // Joined device, after the user typed the code and confirmed the name.
 let request = try await client.pairingRequest(code: code)
-let grant = LumeCloudGrant(accountId: accountId, rootKey: keys.rootKey, serverURL: client.baseURL)
+let grant = LumeCloudGrant(accountId: keys.accountId, rootKey: keys.rootKey, serverURL: client.baseURL)
 try await client.sealPairing(code: code, sealed: LumeCloudPairing.seal(grant, to: request.publicKey, code: code))
 ```
 
@@ -108,7 +118,7 @@ Normalize what the user typed (strip spaces) before calling `pairingRequest`.
 ## Tests
 
 ```bash
-cd Kit
+cd LumeCloudKit
 swift test
 ```
 
@@ -135,14 +145,17 @@ LUME_CLOUD_WRITE_VECTORS=1 swift test --filter CryptoVectorTests
 `LiveE2ETests` is skipped unless `LUME_CLOUD_E2E_URL` is set. It covers this
 sequence:
 
-1. Create an account with fresh keys and register a device.
+1. Create an account with fresh keys (its id must equal `keys.accountId`),
+   check that a second `createAccount` with the same keys throws
+   `.accountExists`, and register a device.
 2. Push two sealed payloads, pull them, and decrypt them.
 3. Push a stale `baseVersion` and check the conflict.
 4. Delete a record and check its tombstone.
 5. Observe a socket poke.
 6. Run a full pairing round trip; the second device must read the records.
 7. Revoke the second device.
-8. Delete the account and check that later calls fail with `.accountDeleted`.
+8. Restore from the recovery key alone with a fresh device id and read the records.
+9. Delete the account and check that later calls fail with `.accountDeleted`.
 
 ```bash
 # Staging

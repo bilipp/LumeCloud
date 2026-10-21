@@ -32,6 +32,7 @@ public enum LumeCloudErrorCode {
     public static let signupClosed = "signup_closed"
     public static let accountDeleted = "account_deleted"
     public static let notFound = "not_found"
+    public static let accountExists = "account_exists"
     public static let pairingAlreadySealed = "pairing_already_sealed"
     public static let resyncRequired = "resync_required"
     public static let recordTooLarge = "record_too_large"
@@ -83,8 +84,8 @@ public struct LumeCloudPlatform: RawRepresentable, Codable, Sendable, Hashable, 
 // MARK: - Accounts (§4.1)
 
 public struct AccountCreated: Codable, Sendable, Hashable {
-    /// 22-char base64url account id. Not secret on its own, but pair it with
-    /// the root key in the Keychain.
+    /// 22-char base64url account id: `LumeCloudKeys.accountId` when the
+    /// client sent one (always, from this Kit). Not secret on its own.
     public var accountId: String
     public var createdAt: Int
 
@@ -114,6 +115,9 @@ public struct AccountInfo: Codable, Sendable, Hashable {
 
 struct CreateAccountBody: Encodable {
     var authVerifier: String
+    /// Omitted only by the deprecated `createAccount(authVerifier:invite:)`,
+    /// which lets the server pick a random id.
+    var accountId: String?
     var invite: String?
 }
 

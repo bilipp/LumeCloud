@@ -28,6 +28,12 @@ public final class LumeCloudClient: Sendable {
             self.init(accountId: accountId, authToken: keys.authToken, deviceID: deviceID)
         }
 
+        /// Credentials for the account derived from `keys` (`keys.accountId`).
+        /// This is all a device restoring from a recovery key needs.
+        public init(keys: LumeCloudKeys, deviceID: UUID) {
+            self.init(accountId: keys.accountId, keys: keys, deviceID: deviceID)
+        }
+
         /// `Bearer <accountId>.<authToken>`.
         var authorizationHeader: String { "Bearer \(accountId).\(authToken)" }
     }
@@ -57,8 +63,21 @@ public final class LumeCloudClient: Sendable {
 
     // MARK: - Accounts (§4.1)
 
-    /// `POST /v1/accounts` (unauthenticated). Pass `invite` only for an
-    /// invite-only instance; a missing or wrong one throws `.signupClosed`.
+    /// `POST /v1/accounts` (unauthenticated) for the account derived from
+    /// `keys`: sends `keys.authVerifier` and `keys.accountId`, so the returned
+    /// `accountId` equals `keys.accountId`.
+    ///
+    /// Throws `.accountExists` when that account already exists (sign in to
+    /// it instead). Pass `invite` only for an invite-only instance; a missing
+    /// or wrong one throws `.signupClosed`.
+    public func createAccount(keys: LumeCloudKeys, invite: String? = nil) async throws -> AccountCreated {
+        let body = CreateAccountBody(authVerifier: keys.authVerifier, accountId: keys.accountId, invite: invite)
+        return try await send(.post, "v1/accounts", body: body, auth: .none)
+    }
+
+    /// `POST /v1/accounts` without an `accountId`: the server picks a random
+    /// one, which a recovery key can't restore.
+    @available(*, deprecated, message: "Use createAccount(keys:invite:), whose account id is derived from the root key.")
     public func createAccount(authVerifier: String, invite: String? = nil) async throws -> AccountCreated {
         try await send(.post, "v1/accounts", body: CreateAccountBody(authVerifier: authVerifier, invite: invite), auth: .none)
     }

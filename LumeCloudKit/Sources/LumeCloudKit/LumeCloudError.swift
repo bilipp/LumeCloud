@@ -19,6 +19,10 @@ public enum LumeCloudError: Error, Sendable {
     case accountDeleted
     /// 404 `not_found` — unknown route, or an expired or unknown pairing code.
     case notFound
+    /// 409 `account_exists` — an account with this id (the one derived from
+    /// the root key) already exists. Sign in to it instead: register this
+    /// device with `Credentials(keys:deviceID:)`.
+    case accountExists
     /// 409 `pairing_already_sealed` — another device sealed this pairing first.
     case pairingAlreadySealed
     /// 410 `resync_required` — `since` is older than the tombstone horizon;
@@ -57,6 +61,7 @@ extension LumeCloudError {
         case LumeCloudErrorCode.signupClosed: return .signupClosed
         case LumeCloudErrorCode.accountDeleted: return .accountDeleted
         case LumeCloudErrorCode.notFound: return .notFound
+        case LumeCloudErrorCode.accountExists: return .accountExists
         case LumeCloudErrorCode.pairingAlreadySealed: return .pairingAlreadySealed
         case LumeCloudErrorCode.resyncRequired: return .resyncRequired
         case LumeCloudErrorCode.recordTooLarge: return .recordTooLarge
@@ -124,6 +129,8 @@ extension LumeCloudError: LocalizedError {
             "This Lume Cloud account no longer exists."
         case .notFound:
             "Not found. The pairing code may have expired."
+        case .accountExists:
+            "This Lume Cloud account already exists."
         case .pairingAlreadySealed:
             "Another device already answered this pairing code."
         case .resyncRequired:
@@ -155,7 +162,8 @@ extension LumeCloudError: Equatable {
         switch (lhs, rhs) {
         case (.badAuth, .badAuth), (.deviceRevoked, .deviceRevoked), (.signupClosed, .signupClosed),
              (.accountDeleted, .accountDeleted), (.notFound, .notFound),
-             (.pairingAlreadySealed, .pairingAlreadySealed), (.resyncRequired, .resyncRequired),
+             (.accountExists, .accountExists), (.pairingAlreadySealed, .pairingAlreadySealed),
+             (.resyncRequired, .resyncRequired),
              (.recordTooLarge, .recordTooLarge), (.quotaExceeded, .quotaExceeded),
              (.missingCredentials, .missingCredentials):
             true

@@ -1,14 +1,15 @@
 {
   "format" : "lume-cloud-crypto-vectors",
   "keys" : {
-    "accountId" : "AAECAwQFBgcICQoLDA0ODw",
+    "accountId" : "cbm-snbxbUtTCAM8n_puuA",
+    "accountIdInfo" : "lume-cloud/v1/account",
     "authKey" : {
       "info" : "lume-cloud/v1/auth",
       "value" : "Wvn4bW0A86n6O6NDhVbKaher7xdHMctYYtNfr-KGkTY"
     },
     "authToken" : "Wvn4bW0A86n6O6NDhVbKaher7xdHMctYYtNfr-KGkTY",
     "authVerifier" : "Xa2C5IEgh90MuDpcLkDA-i46mFdi_kaokB13ETS505I",
-    "authorizationHeader" : "Bearer AAECAwQFBgcICQoLDA0ODw.Wvn4bW0A86n6O6NDhVbKaher7xdHMctYYtNfr-KGkTY",
+    "authorizationHeader" : "Bearer cbm-snbxbUtTCAM8n_puuA.Wvn4bW0A86n6O6NDhVbKaher7xdHMctYYtNfr-KGkTY",
     "encKey" : {
       "info" : "lume-cloud/v1/enc",
       "value" : "f18CI76RBI0GwrkRzvUTAmFlxasz6lkd0HsHKk3ShOU"
@@ -24,6 +25,7 @@
   "notes" : [
     "Binary values are base64url without padding unless the field name ends in Hex.",
     "Derived keys: HKDF-SHA256(IKM = rootKey, salt = empty, info, L = 32).",
+    "accountId = base64url(HKDF-SHA256(IKM = rootKey, salt = empty, info = accountIdInfo, L = 16)).",
     "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))).",
     "envelope = base64url(0x01 || nonce || AES-256-GCM(encKey, nonce, canonicalPayload, AAD = UTF8(rid)) || tag).",
     "canonicalPayload is RFC 8785 (JCS) JSON: keys sorted by UTF-16 code units, ECMAScript number formatting, JSON.stringify string escaping.",
@@ -32,12 +34,12 @@
     "Recovery key: Crockford base32 of the 256 key bits (big-endian, 4 zero pad bits), plus the Crockford mod-37 check symbol, grouped by 4."
   ],
   "pairing" : {
-    "canonicalGrant" : "{\"accountId\":\"AAECAwQFBgcICQoLDA0ODw\",\"rootKey\":\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8\",\"serverURL\":\"https://cloud-staging.getlume.org\"}",
-    "ciphertext" : "9C8THwkQ0r1fFhOAy3hDKaT6irS1eSYEA-NFhVn5zBdgZ5LDT0DC_GJRCx87N2ADbWeJqY2CKQQS_ONZePJKTk2Ix3t9ts56zzPScbdPFVMvs9zATpw_jSeLCEwRb8xnFWlyN8jRdrgA_tl2W08jUkf9DTLLoi-tWQ9LqDRtMWfSeCiVGTG0kzVg8dCioFo1_w8G5NhZRKscerXq32c",
+    "canonicalGrant" : "{\"accountId\":\"cbm-snbxbUtTCAM8n_puuA\",\"rootKey\":\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8\",\"serverURL\":\"https://cloud-staging.getlume.org\"}",
+    "ciphertext" : "G5RW-qACeyhuubD54D5tWj3FYcKCYg6-s6haLGVwJNdGJiun7t-YXQm9dbVcdmUy0XqFOMP_Zl5vDwGshJx9hKEF6kpLslPw6N5ENLfXOlLVrUbQyvm-aHQV4jkotzasJcgIhCftGfYvzoYP31OFdD_HoKId9vKOXFw_PFQjL85yvWzdQOmrLo_KemeSCU8W2XisMFjOoHgxOORx51c",
     "code" : "483920",
-    "enc" : "-M5-79HnI62gmurY3qIzRwbKGtWeWGuKXqxN7z3IOzA",
+    "enc" : "TaB1fap2P6SgHXakTfSy1iroQugKAEhw5rD4dLS_kFY",
     "grant" : {
-      "accountId" : "AAECAwQFBgcICQoLDA0ODw",
+      "accountId" : "cbm-snbxbUtTCAM8n_puuA",
       "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
       "serverURL" : "https://cloud-staging.getlume.org"
     },

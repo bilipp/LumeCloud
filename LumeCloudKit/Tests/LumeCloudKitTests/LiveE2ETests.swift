@@ -42,14 +42,19 @@ struct LiveE2ETests {
         let health = try await anonymous.health()
         #expect(health.ok)
 
-        // Account + device A.
+        // Account + device A. The account id is derived from the root key.
         let keys = LumeCloudKeys.generate()
-        let created = try await anonymous.createAccount(authVerifier: keys.authVerifier, invite: Self.invite)
+        let created = try await anonymous.createAccount(keys: keys, invite: Self.invite)
+        #expect(created.accountId == keys.accountId)
         #expect(created.accountId.count == 22)
         let deviceA = UUID()
-        let clientA = anonymous.withCredentials(.init(accountId: created.accountId, keys: keys, deviceID: deviceA))
+        let clientA = anonymous.withCredentials(.init(keys: keys, deviceID: deviceA))
 
         do {
+            // The same keys can't create a second account.
+            await #expect(throws: LumeCloudError.accountExists) {
+                try await anonymous.createAccount(keys: keys, invite: Self.invite)
+            }
             try await runFlow(clientA: clientA, anonymous: anonymous, keys: keys, accountId: created.accountId, deviceA: deviceA)
         } catch {
             try? await clientA.deleteAccount()
@@ -191,5 +196,16 @@ struct LiveE2ETests {
         // Revoking B locks it out.
         try await clientA.revokeDevice(id: deviceB)
         await #expect(throws: LumeCloudError.deviceRevoked) { try await clientB.account() }
+
+        // Restore from the recovery key alone (§4.8): derive keys + account id,
+        // then register a fresh device id.
+        let restoredKeys = try LumeCloudRecoveryKey.keys(from: LumeCloudRecoveryKey.encode(keys))
+        let deviceC = UUID()
+        let clientC = anonymous.withCredentials(.init(keys: restoredKeys, deviceID: deviceC))
+        _ = try await clientC.registerDevice(id: deviceC, name: "E2E C", platform: .current)
+        #expect(try await clientC.account().accountId == accountId)
+        let pageC = try await clientC.allChanges(since: 0)
+        let profileC = try #require(pageC.records.first { $0.rid == restoredKeys.recordID(for: profile.key) })
+        #expect(try restoredKeys.openPayload(#require(profileC.ciphertext), rid: profileC.rid) == profile)
     }
 }

@@ -148,21 +148,39 @@ struct ClientTests {
     // MARK: Accounts
 
     @Test func createAccount() async throws {
-        let client = makeClient { _ in Self.ok(#"{"accountId":"AAAAAAAAAAAAAAAAAAAAAA","createdAt":1760000000000}"#, status: 201) }
-        let created = try await client.createAccount(authVerifier: "verifier", invite: "inv")
-        #expect(created == AccountCreated(accountId: "AAAAAAAAAAAAAAAAAAAAAA", createdAt: 1_760_000_000_000))
+        let keys = try LumeCloudKeys(rootKey: Data(0 ..< 32))
+        let client = makeClient { _ in Self.ok(#"{"accountId":"cbm-snbxbUtTCAM8n_puuA","createdAt":1760000000000}"#, status: 201) }
+        let created = try await client.createAccount(keys: keys, invite: "inv")
+        #expect(created == AccountCreated(accountId: keys.accountId, createdAt: 1_760_000_000_000))
         let request = try lastRequest()
         #expect(request.method == "POST")
         #expect(request.path == "/v1/accounts")
         #expect(request.headers["Content-Type"] == "application/json")
-        #expect(request.json == ["authVerifier": "verifier", "invite": "inv"])
+        #expect(request.json == [
+            "authVerifier": .string(keys.authVerifier), "accountId": "cbm-snbxbUtTCAM8n_puuA", "invite": "inv",
+        ])
         expectNoAuth(request)
     }
 
     @Test func createAccountOmitsMissingInvite() async throws {
+        let keys = try LumeCloudKeys(rootKey: Data(0 ..< 32))
+        let client = makeClient(credentials: nil) { _ in Self.ok(#"{"accountId":"a","createdAt":1}"#, status: 201) }
+        _ = try await client.createAccount(keys: keys)
+        #expect(try lastRequest().json == ["authVerifier": .string(keys.authVerifier), "accountId": .string(keys.accountId)])
+    }
+
+    @available(*, deprecated)
+    @Test func deprecatedCreateAccountLetsTheServerPickTheID() async throws {
         let client = makeClient(credentials: nil) { _ in Self.ok(#"{"accountId":"a","createdAt":1}"#, status: 201) }
         _ = try await client.createAccount(authVerifier: "verifier")
         #expect(try lastRequest().json == ["authVerifier": "verifier"])
+    }
+
+    @Test func duplicateAccountIsTyped() async {
+        let client = makeClient(credentials: nil) { _ in Self.error(409, "account_exists") }
+        await #expect(throws: LumeCloudError.accountExists) {
+            try await client.createAccount(keys: LumeCloudKeys.generate())
+        }
     }
 
     @Test func account() async throws {
@@ -389,6 +407,9 @@ struct ClientTests {
         let keys = try LumeCloudKeys(rootKey: Data(0 ..< 32))
         let credentials = LumeCloudClient.Credentials(accountId: "a", keys: keys, deviceID: Self.deviceID)
         #expect(credentials.authorizationHeader == "Bearer a.Wvn4bW0A86n6O6NDhVbKaher7xdHMctYYtNfr-KGkTY")
+        let derived = LumeCloudClient.Credentials(keys: keys, deviceID: Self.deviceID)
+        #expect(derived.accountId == "cbm-snbxbUtTCAM8n_puuA")
+        #expect(derived.authorizationHeader == "Bearer cbm-snbxbUtTCAM8n_puuA.Wvn4bW0A86n6O6NDhVbKaher7xdHMctYYtNfr-KGkTY")
         var dumped = ""
         dump(credentials, to: &dumped)
         for text in ["\(credentials)", String(reflecting: credentials), dumped] {
@@ -430,6 +451,7 @@ struct ClientTests {
         (403, "signup_closed", .signupClosed),
         (404, "account_deleted", .accountDeleted),
         (404, "not_found", .notFound),
+        (409, "account_exists", .accountExists),
         (409, "pairing_already_sealed", .pairingAlreadySealed),
         (410, "resync_required", .resyncRequired),
         (413, "record_too_large", .recordTooLarge),
@@ -500,7 +522,7 @@ struct ClientTests {
     @Test func errorDescriptionsNeverContainCredentials() {
         let errors: [LumeCloudError] = [
             .badRequest(message: nil), .badAuth, .deviceRevoked, .signupClosed, .accountDeleted, .notFound,
-            .pairingAlreadySealed, .resyncRequired, .recordTooLarge, .rateLimited(retryAfter: 2.2), .quotaExceeded,
+            .accountExists, .pairingAlreadySealed, .resyncRequired, .recordTooLarge, .rateLimited(retryAfter: 2.2), .quotaExceeded,
             .server(status: 500, code: nil), .transport(URLError(.timedOut)), .decoding("x"), .missingCredentials,
         ]
         for error in errors {

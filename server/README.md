@@ -52,8 +52,10 @@ npx vitest run            # or: npm test
 npm run typecheck         # tsc --noEmit for src/ + admin/, and for test/
 ```
 
-The suite covers accounts (create/auth/bad auth/delete, unknown ids never
-allocate storage), signup controls (invite mode, burst limit, daily cap),
+The suite covers accounts (create under the client's derived id, malformed
+id → `400`, duplicate → `409 account_exists`, the deprecated server-picked id
+when `accountId` is absent, auth/bad auth/delete, unknown ids never allocate
+storage), signup controls (invite mode, burst limit incl. duplicates, daily cap),
 devices (register/list/revoke, revoked ids can't re-register), push/changes
 (ordering, pagination, conflicts, duplicates, tombstones, `since=0`),
 limits (`413` record/body/count, `507` bytes/records, nothing applied),

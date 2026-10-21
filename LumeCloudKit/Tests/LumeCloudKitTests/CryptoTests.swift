@@ -53,6 +53,14 @@ struct CryptoTests {
         #expect(keys.authVerifier == "Xa2C5IEgh90MuDpcLkDA-i46mFdi_kaokB13ETS505I")
     }
 
+    @Test func accountIDMatchesKnownAnswer() throws {
+        // HKDF-SHA256(rootKey, salt = empty, info = "lume-cloud/v1/account", L = 16), via Python hmac.
+        let keys = try LumeCloudKeys(rootKey: Self.rootKey)
+        #expect(keys.accountId == "cbm-snbxbUtTCAM8n_puuA")
+        #expect(keys.accountId.count == 22)
+        #expect(try LumeCloudKeys(rootKey: Data(repeating: 0xFF, count: 32)).accountId != keys.accountId)
+    }
+
     @Test func recordIDsMatchKnownAnswers() throws {
         let keys = try LumeCloudKeys(rootKey: Self.rootKey)
         let rid = keys.recordID(for: Self.profileKey)

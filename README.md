@@ -12,7 +12,7 @@ address. New devices join with a 6-digit pairing code (HPKE key handoff).
 |---|---|
 | [`spec/`](spec/) | The wire contract ([`PROTOCOL.md`](spec/PROTOCOL.md)) and cross-platform test vectors. Normative for every client. |
 | [`server/`](server/) | Cloudflare Worker + SQLite-backed Durable Objects (TypeScript). The official instance runs at `cloud.getlume.org`, staging at `cloud-staging.getlume.org`. |
-| [`Kit/`](Kit/) | `LumeCloudKit`, the zero-dependency Swift client (CryptoKit). The Lume app consumes it as a local SPM package at `../LumeCloud/Kit`. |
+| [`LumeCloudKit/`](LumeCloudKit/) | `LumeCloudKit`, the zero-dependency Swift client (CryptoKit). The Lume app consumes it as a local SPM package at `../LumeCloud/LumeCloudKit`. |
 
 The Android client (Kotlin) lives in `bilipp/LumeAndroid` and consumes `spec/`
 as a git submodule.

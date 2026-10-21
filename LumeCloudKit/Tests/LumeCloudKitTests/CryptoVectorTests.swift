@@ -19,14 +19,15 @@ struct CryptoVectorTests {
     static let fileURL = URL(fileURLWithPath: #filePath)
         .deletingLastPathComponent() // LumeCloudKitTests
         .deletingLastPathComponent() // Tests
-        .deletingLastPathComponent() // Kit
+        .deletingLastPathComponent() // LumeCloudKit
         .deletingLastPathComponent() // repo root
         .appending(path: "spec/vectors/crypto.json")
 
     // MARK: Fixed inputs
 
     static let rootKey = Data(0 ..< 32)
-    static let accountId = Base64URL.encode(Data(0 ..< 16)) // "AAECAwQFBgcICQoLDA0ODw"
+    /// Derived from `rootKey` (§2.1), like every real account id.
+    static var accountId: String { try! LumeCloudKeys(rootKey: rootKey).accountId } // swiftlint:disable:this force_try
     static let profileUUID = "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D"
     static let pairingPrivateKey = Data(0x20 ..< 0x40)
     static let pairingCode = "483920"
@@ -86,6 +87,8 @@ struct CryptoVectorTests {
             var authKey: Derived
             var authVerifier: String
             var authToken: String
+            /// HKDF `info` of the 16-byte account id.
+            var accountIdInfo: String
             var accountId: String
             var authorizationHeader: String
         }
@@ -189,6 +192,7 @@ struct CryptoVectorTests {
             notes: [
                 "Binary values are base64url without padding unless the field name ends in Hex.",
                 "Derived keys: HKDF-SHA256(IKM = rootKey, salt = empty, info, L = 32).",
+                "accountId = base64url(HKDF-SHA256(IKM = rootKey, salt = empty, info = accountIdInfo, L = 16)).",
                 "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))).",
                 "envelope = base64url(0x01 || nonce || AES-256-GCM(encKey, nonce, canonicalPayload, AAD = UTF8(rid)) || tag).",
                 "canonicalPayload is RFC 8785 (JCS) JSON: keys sorted by UTF-16 code units, ECMAScript number formatting, JSON.stringify string escaping.",
@@ -205,8 +209,9 @@ struct CryptoVectorTests {
                 authKey: .init(info: LumeCloudKeys.Info.auth, value: Base64URL.encode(keys.authKey)),
                 authVerifier: keys.authVerifier,
                 authToken: keys.authToken,
-                accountId: accountId,
-                authorizationHeader: LumeCloudClient.Credentials(accountId: accountId, keys: keys, deviceID: UUID()).authorizationHeader
+                accountIdInfo: LumeCloudKeys.Info.account,
+                accountId: keys.accountId,
+                authorizationHeader: LumeCloudClient.Credentials(keys: keys, deviceID: UUID()).authorizationHeader
             ),
             recoveryKey: Vectors.RecoveryKey(
                 rendering: rendering,
@@ -260,8 +265,9 @@ struct CryptoVectorTests {
     // MARK: Tests
 
     @Test func committedVectorsMatch() throws {
-        let committed = try Self.load()
         if ProcessInfo.processInfo.environment["LUME_CLOUD_WRITE_VECTORS"] == "1" {
+            // An older file may not decode any more; then the pairing is resealed too.
+            let committed = (try? Self.load()) ?? nil
             let sealed = try Self.validSealed(in: committed)
                 ?? LumeCloudPairing.seal(Self.grant, to: Base64URL.encode(Self.pairingKey().publicKey.rawRepresentation), code: Self.pairingCode)
             try FileManager.default.createDirectory(at: Self.fileURL.deletingLastPathComponent(), withIntermediateDirectories: true)
@@ -269,7 +275,7 @@ struct CryptoVectorTests {
             return
         }
 
-        let vectors = try #require(committed, "spec/vectors/crypto.json is missing; run with LUME_CLOUD_WRITE_VECTORS=1")
+        let vectors = try #require(try Self.load(), "spec/vectors/crypto.json is missing; run with LUME_CLOUD_WRITE_VECTORS=1")
         let sealed = try #require(Self.validSealed(in: vectors), "the committed pairing vector doesn't open")
         let expected = try Self.generate(sealed: sealed)
         #expect(vectors.keys == expected.keys)
@@ -292,6 +298,7 @@ struct CryptoVectorTests {
         #expect(Base64URL.encode(keys.idKey) == vectors.keys.idKey.value)
         #expect(Base64URL.encode(keys.authKey) == vectors.keys.authKey.value)
         #expect(keys.authVerifier == vectors.keys.authVerifier)
+        #expect(keys.accountId == vectors.keys.accountId)
         #expect(vectors.keys.authorizationHeader == "Bearer \(vectors.keys.accountId).\(keys.authToken)")
 
         #expect(LumeCloudRecoveryKey.encode(keys) == vectors.recoveryKey.rendering)

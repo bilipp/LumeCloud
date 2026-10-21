@@ -31,11 +31,16 @@ export function bearer(accountId: string, authKey: Uint8Array): string {
 	return `Bearer ${accountId}.${encodeB64url(authKey)}`;
 }
 
+/** A random well-formed account id (stands in for the HKDF-derived one). */
+export function randomAccountId(): string {
+	return encodeB64url(crypto.getRandomValues(new Uint8Array(16)));
+}
+
 export async function newAccount(): Promise<TestAccount> {
 	const authKey = crypto.getRandomValues(new Uint8Array(32));
 	const res = await call("/v1/accounts", {
 		method: "POST",
-		body: JSON.stringify({ authVerifier: await sha256B64url(authKey) }),
+		body: JSON.stringify({ authVerifier: await sha256B64url(authKey), accountId: randomAccountId() }),
 	});
 	if (res.status !== 201) throw new Error(`account create failed: ${res.status} ${await res.text()}`);
 	const { accountId } = await res.json<{ accountId: string }>();
