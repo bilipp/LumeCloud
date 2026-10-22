@@ -1,0 +1,90 @@
+{
+  "format" : "lume-cloud-payload-vectors",
+  "notes" : [
+    "canonicalPayload is normative: the exact RFC 8785 plaintext the codec produces for the model. payload is the same value, pretty-printed for reading.",
+    "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))) with the keys derived from rootKey, the root key of crypto.json.",
+    "Dates are epoch milliseconds, UUIDs uppercase. A nil profile in a logical key is the literal none.",
+    "previousCanonicalPayload: the last-synced bytes of the same record.",
+    "Data fields and top-level members this build doesn't know carry over from previousCanonicalPayload unchanged; known fields (here updatedAt) take the model's value."
+  ],
+  "records" : [
+    {
+      "canonicalPayload" : "{\"data\":{\"baseURL\":\"http://recorder.example:8089\",\"deviceID\":\"0A1B2C3D-0000-4000-8000-00000000DD03\",\"id\":\"0A1B2C3D-0000-4000-8000-00000000DD01\",\"isEnabled\":true,\"kindRaw\":\"lumeRecorder\",\"name\":\"Basement Recorder\",\"serverID\":\"0A1B2C3D-0000-4000-8000-00000000DD02\",\"token\":\"fictional-pairing-token\",\"updatedAt\":1760000123456},\"key\":\"recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01\",\"type\":\"recordingServer\",\"v\":1}",
+      "logicalKey" : "recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01",
+      "name" : "paired recorder",
+      "payload" : {
+        "data" : {
+          "baseURL" : "http://recorder.example:8089",
+          "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD03",
+          "id" : "0A1B2C3D-0000-4000-8000-00000000DD01",
+          "isEnabled" : true,
+          "kindRaw" : "lumeRecorder",
+          "name" : "Basement Recorder",
+          "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+          "token" : "fictional-pairing-token",
+          "updatedAt" : 1760000123456
+        },
+        "key" : "recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01",
+        "type" : "recordingServer",
+        "v" : 1
+      },
+      "rid" : "j68miKgGcXyT5Uf7nQGQFbdEOrWr69pSXvgwQXshm8Q"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"baseURL\":\"http://attic.example\",\"deviceID\":null,\"id\":\"0A1B2C3D-0000-4000-8000-00000000DD09\",\"isEnabled\":false,\"kindRaw\":\"lumeRecorder\",\"name\":\"Attic\",\"serverID\":null,\"token\":\"\",\"updatedAt\":1760000123456},\"key\":\"recordingServer/0A1B2C3D-0000-4000-8000-00000000DD09\",\"type\":\"recordingServer\",\"v\":1}",
+      "logicalKey" : "recordingServer/0A1B2C3D-0000-4000-8000-00000000DD09",
+      "name" : "unpaired recorder",
+      "payload" : {
+        "data" : {
+          "baseURL" : "http://attic.example",
+          "deviceID" : null,
+          "id" : "0A1B2C3D-0000-4000-8000-00000000DD09",
+          "isEnabled" : false,
+          "kindRaw" : "lumeRecorder",
+          "name" : "Attic",
+          "serverID" : null,
+          "token" : "",
+          "updatedAt" : 1760000123456
+        },
+        "key" : "recordingServer/0A1B2C3D-0000-4000-8000-00000000DD09",
+        "type" : "recordingServer",
+        "v" : 1
+      },
+      "rid" : "B7wx6HvUEng041DrUjp5vOLj62OIL6vIydL41x_a7D4"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"baseURL\":\"http://recorder.example:8089\",\"deviceID\":\"0A1B2C3D-0000-4000-8000-00000000DD03\",\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"id\":\"0A1B2C3D-0000-4000-8000-00000000DD01\",\"isEnabled\":true,\"kindRaw\":\"lumeRecorder\",\"name\":\"Basement Recorder\",\"serverID\":\"0A1B2C3D-0000-4000-8000-00000000DD02\",\"token\":\"fictional-pairing-token\",\"updatedAt\":1760000123456},\"futureMeta\":\"kept\",\"key\":\"recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01\",\"type\":\"recordingServer\",\"v\":1}",
+      "logicalKey" : "recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01",
+      "name" : "unknown data survives a re-encode",
+      "payload" : {
+        "data" : {
+          "baseURL" : "http://recorder.example:8089",
+          "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD03",
+          "futureField" : {
+            "nested" : [
+              "é",
+              "a/b",
+              1e-05,
+              1e+21
+            ]
+          },
+          "id" : "0A1B2C3D-0000-4000-8000-00000000DD01",
+          "isEnabled" : true,
+          "kindRaw" : "lumeRecorder",
+          "name" : "Basement Recorder",
+          "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+          "token" : "fictional-pairing-token",
+          "updatedAt" : 1760000123456
+        },
+        "futureMeta" : "kept",
+        "key" : "recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01",
+        "type" : "recordingServer",
+        "v" : 1
+      },
+      "previousCanonicalPayload" : "{\"data\":{\"baseURL\":\"http://recorder.example:8089\",\"deviceID\":\"0A1B2C3D-0000-4000-8000-00000000DD03\",\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"id\":\"0A1B2C3D-0000-4000-8000-00000000DD01\",\"isEnabled\":true,\"kindRaw\":\"lumeRecorder\",\"name\":\"Basement Recorder\",\"serverID\":\"0A1B2C3D-0000-4000-8000-00000000DD02\",\"token\":\"fictional-pairing-token\",\"updatedAt\":1759000000000},\"futureMeta\":\"kept\",\"key\":\"recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01\",\"type\":\"recordingServer\",\"v\":1}",
+      "rid" : "j68miKgGcXyT5Uf7nQGQFbdEOrWr69pSXvgwQXshm8Q"
+    }
+  ],
+  "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "type" : "recordingServer"
+}

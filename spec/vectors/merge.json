@@ -1,0 +1,1767 @@
+{
+  "conflicts" : [
+    {
+      "local" : {
+        "data" : {
+          "epgURL" : null,
+          "hiddenTabsRaw" : "",
+          "id" : "0A1B2C3D-0000-4000-8000-00000000AB01",
+          "macAddress" : "",
+          "name" : "Harbor Lights (Home)",
+          "password" : "secret",
+          "serverURL" : "http://provider.example:8080",
+          "sourceTypeRaw" : "xtream",
+          "syncEnabled" : true,
+          "updatedAt" : 1760000600000,
+          "username" : "viewer"
+        },
+        "key" : "playlist/0A1B2C3D-0000-4000-8000-00000000AB01",
+        "type" : "playlist",
+        "v" : 1
+      },
+      "merged" : {
+        "data" : {
+          "epgURL" : null,
+          "hiddenTabsRaw" : "",
+          "id" : "0A1B2C3D-0000-4000-8000-00000000AB01",
+          "macAddress" : "",
+          "name" : "Harbor Lights",
+          "password" : "secret",
+          "serverURL" : "http://provider.example:8080",
+          "sourceTypeRaw" : "xtream",
+          "syncEnabled" : true,
+          "updatedAt" : 1760000000000,
+          "username" : "viewer"
+        },
+        "key" : "playlist/0A1B2C3D-0000-4000-8000-00000000AB01",
+        "type" : "playlist",
+        "v" : 1
+      },
+      "name" : "remote wins",
+      "remote" : {
+        "data" : {
+          "epgURL" : null,
+          "hiddenTabsRaw" : "",
+          "id" : "0A1B2C3D-0000-4000-8000-00000000AB01",
+          "macAddress" : "",
+          "name" : "Harbor Lights",
+          "password" : "secret",
+          "serverURL" : "http://provider.example:8080",
+          "sourceTypeRaw" : "xtream",
+          "syncEnabled" : true,
+          "updatedAt" : 1760000000000,
+          "username" : "viewer"
+        },
+        "key" : "playlist/0A1B2C3D-0000-4000-8000-00000000AB01",
+        "type" : "playlist",
+        "v" : 1
+      },
+      "type" : "playlist"
+    },
+    {
+      "local" : {
+        "data" : {
+          "addedToWatchlistDate" : null,
+          "contentId" : "0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+          "customOrder" : null,
+          "favoriteOrder" : 2,
+          "isFavorite" : false,
+          "isHidden" : false,
+          "isWatched" : false,
+          "kindRaw" : "movie",
+          "lastWatchedDate" : 1760000000000,
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "recommendationVoteRaw" : 0,
+          "updatedAt" : 1760000000000,
+          "watchProgress" : 1800
+        },
+        "key" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+        "type" : "content",
+        "v" : 1
+      },
+      "merged" : {
+        "data" : {
+          "addedToWatchlistDate" : null,
+          "contentId" : "0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+          "customOrder" : null,
+          "favoriteOrder" : 2,
+          "futureField" : {
+            "nested" : "kept"
+          },
+          "isFavorite" : true,
+          "isHidden" : true,
+          "isWatched" : true,
+          "kindRaw" : "movie",
+          "lastWatchedDate" : 1760000600000,
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "recommendationVoteRaw" : -1,
+          "updatedAt" : 1760000600000,
+          "watchProgress" : 1800
+        },
+        "key" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+        "type" : "content",
+        "v" : 1
+      },
+      "name" : "field policy, the later updatedAt, and a remote-only field survives",
+      "remote" : {
+        "data" : {
+          "addedToWatchlistDate" : null,
+          "contentId" : "0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+          "customOrder" : null,
+          "favoriteOrder" : null,
+          "futureField" : {
+            "nested" : "kept"
+          },
+          "isFavorite" : true,
+          "isHidden" : true,
+          "isWatched" : true,
+          "kindRaw" : "movie",
+          "lastWatchedDate" : 1760000600000,
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "recommendationVoteRaw" : -1,
+          "updatedAt" : 1760000600000,
+          "watchProgress" : 1200
+        },
+        "key" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+        "type" : "content",
+        "v" : 1
+      },
+      "type" : "content"
+    },
+    {
+      "local" : {
+        "data" : {
+          "colorRaw" : "teal",
+          "createdAt" : 1759000000000,
+          "id" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "isChild" : true,
+          "name" : "Harbor Room",
+          "sortOrder" : 1,
+          "symbolName" : "star.fill",
+          "updatedAt" : 1760000000000
+        },
+        "key" : "profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+        "type" : "profile",
+        "v" : 1
+      },
+      "merged" : {
+        "data" : {
+          "colorRaw" : "teal",
+          "createdAt" : 1759000000000,
+          "id" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "isChild" : true,
+          "name" : "Harbor",
+          "sortOrder" : 1,
+          "symbolName" : "star.fill",
+          "updatedAt" : 1760000600000
+        },
+        "key" : "profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+        "type" : "profile",
+        "v" : 1
+      },
+      "name" : "the newer side wins and isChild true survives",
+      "remote" : {
+        "data" : {
+          "colorRaw" : "teal",
+          "createdAt" : 1759000000000,
+          "id" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "isChild" : false,
+          "name" : "Harbor",
+          "sortOrder" : 1,
+          "symbolName" : "star.fill",
+          "updatedAt" : 1760000600000
+        },
+        "key" : "profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+        "type" : "profile",
+        "v" : 1
+      },
+      "type" : "profile"
+    },
+    {
+      "local" : {
+        "data" : {
+          "id" : "0A1B2C3D-0000-4000-8000-00000000EE01",
+          "isEnabled" : false,
+          "name" : "Meadow Guide",
+          "updatedAt" : 1760000600000,
+          "url" : "https://guide.example/a.xml"
+        },
+        "key" : "epgSource/0A1B2C3D-0000-4000-8000-00000000EE01",
+        "type" : "epgSource",
+        "v" : 1
+      },
+      "merged" : {
+        "data" : {
+          "id" : "0A1B2C3D-0000-4000-8000-00000000EE01",
+          "isEnabled" : true,
+          "name" : "Meadow Guide HD",
+          "updatedAt" : 1760000000000,
+          "url" : "https://guide.example/b.xml"
+        },
+        "key" : "epgSource/0A1B2C3D-0000-4000-8000-00000000EE01",
+        "type" : "epgSource",
+        "v" : 1
+      },
+      "name" : "remote wins",
+      "remote" : {
+        "data" : {
+          "id" : "0A1B2C3D-0000-4000-8000-00000000EE01",
+          "isEnabled" : true,
+          "name" : "Meadow Guide HD",
+          "updatedAt" : 1760000000000,
+          "url" : "https://guide.example/b.xml"
+        },
+        "key" : "epgSource/0A1B2C3D-0000-4000-8000-00000000EE01",
+        "type" : "epgSource",
+        "v" : 1
+      },
+      "type" : "epgSource"
+    },
+    {
+      "local" : {
+        "data" : {
+          "pinHash" : "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+          "updatedAt" : 1760000600000
+        },
+        "key" : "parentalPin",
+        "type" : "parentalPin",
+        "v" : 1
+      },
+      "merged" : {
+        "data" : {
+          "pinHash" : "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+          "updatedAt" : 1760000000000
+        },
+        "key" : "parentalPin",
+        "type" : "parentalPin",
+        "v" : 1
+      },
+      "name" : "remote wins",
+      "remote" : {
+        "data" : {
+          "pinHash" : "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+          "updatedAt" : 1760000000000
+        },
+        "key" : "parentalPin",
+        "type" : "parentalPin",
+        "v" : 1
+      },
+      "type" : "parentalPin"
+    },
+    {
+      "local" : {
+        "data" : {
+          "categoryID" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+          "isRestricted" : true,
+          "updatedAt" : 1760000600000
+        },
+        "key" : "categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+        "type" : "categoryRestriction",
+        "v" : 1
+      },
+      "merged" : {
+        "data" : {
+          "categoryID" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+          "isRestricted" : true,
+          "updatedAt" : 1760000000000
+        },
+        "key" : "categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+        "type" : "categoryRestriction",
+        "v" : 1
+      },
+      "name" : "restricted on both sides",
+      "remote" : {
+        "data" : {
+          "categoryID" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+          "isRestricted" : true,
+          "updatedAt" : 1760000000000
+        },
+        "key" : "categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+        "type" : "categoryRestriction",
+        "v" : 1
+      },
+      "type" : "categoryRestriction"
+    },
+    {
+      "local" : {
+        "data" : {
+          "key" : "demo:soccer/meadow.1:4021",
+          "kindRaw" : "team",
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "sortOrder" : 2,
+          "updatedAt" : 1760000600000
+        },
+        "key" : "sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021",
+        "type" : "sportsFollow",
+        "v" : 1
+      },
+      "merged" : {
+        "data" : {
+          "key" : "demo:soccer/meadow.1:4021",
+          "kindRaw" : "team",
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "sortOrder" : 2,
+          "updatedAt" : 1760000600000
+        },
+        "key" : "sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021",
+        "type" : "sportsFollow",
+        "v" : 1
+      },
+      "name" : "the newer side wins",
+      "remote" : {
+        "data" : {
+          "key" : "demo:soccer/meadow.1:4021",
+          "kindRaw" : "team",
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "sortOrder" : 5,
+          "updatedAt" : 1760000000000
+        },
+        "key" : "sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021",
+        "type" : "sportsFollow",
+        "v" : 1
+      },
+      "type" : "sportsFollow"
+    },
+    {
+      "local" : {
+        "data" : {
+          "baseURL" : "http://recorder.example:8089",
+          "deviceID" : null,
+          "id" : "0A1B2C3D-0000-4000-8000-00000000DD01",
+          "isEnabled" : true,
+          "kindRaw" : "lumeRecorder",
+          "name" : "Basement Recorder",
+          "serverID" : null,
+          "token" : "fictional-token-2",
+          "updatedAt" : 1760000600000
+        },
+        "key" : "recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01",
+        "type" : "recordingServer",
+        "v" : 1
+      },
+      "merged" : {
+        "data" : {
+          "baseURL" : "http://recorder.example:8089",
+          "deviceID" : null,
+          "id" : "0A1B2C3D-0000-4000-8000-00000000DD01",
+          "isEnabled" : true,
+          "kindRaw" : "lumeRecorder",
+          "name" : "Attic Recorder",
+          "serverID" : null,
+          "token" : "fictional-token-1",
+          "updatedAt" : 1760000600000
+        },
+        "key" : "recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01",
+        "type" : "recordingServer",
+        "v" : 1
+      },
+      "name" : "an exact updatedAt tie: remote wins as a whole record",
+      "remote" : {
+        "data" : {
+          "baseURL" : "http://recorder.example:8089",
+          "deviceID" : null,
+          "id" : "0A1B2C3D-0000-4000-8000-00000000DD01",
+          "isEnabled" : true,
+          "kindRaw" : "lumeRecorder",
+          "name" : "Attic Recorder",
+          "serverID" : null,
+          "token" : "fictional-token-1",
+          "updatedAt" : 1760000600000
+        },
+        "key" : "recordingServer/0A1B2C3D-0000-4000-8000-00000000DD01",
+        "type" : "recordingServer",
+        "v" : 1
+      },
+      "type" : "recordingServer"
+    },
+    {
+      "local" : {
+        "data" : {
+          "showsFavorites" : false,
+          "showsRecentlyWatched" : true,
+          "updatedAt" : 1760000600000
+        },
+        "key" : "liveTVPrefs",
+        "type" : "liveTVPrefs",
+        "v" : 1
+      },
+      "merged" : {
+        "data" : {
+          "showsFavorites" : true,
+          "showsRecentlyWatched" : false,
+          "updatedAt" : 1760000000000
+        },
+        "key" : "liveTVPrefs",
+        "type" : "liveTVPrefs",
+        "v" : 1
+      },
+      "name" : "remote wins",
+      "remote" : {
+        "data" : {
+          "showsFavorites" : true,
+          "showsRecentlyWatched" : false,
+          "updatedAt" : 1760000000000
+        },
+        "key" : "liveTVPrefs",
+        "type" : "liveTVPrefs",
+        "v" : 1
+      },
+      "type" : "liveTVPrefs"
+    }
+  ],
+  "format" : "lume-cloud-merge-vectors",
+  "notes" : [
+    "reconcile: base is the value both sides last agreed on (lastSyncedPayload / the shadow), local the device's value, remote the other side's.",
+    "null means absent: never synced, or deleted.",
+    "verdict: noChange (write nothing), pushToRemote (write value to the remote side), pullToLocal (write value locally), writeBoth (write value to both).",
+    "value null with pushToRemote or pullToLocal is a deletion; with noChange it is unused.",
+    "Every verdict re-baselines to the written value.",
+    "reconcile values carry only the fields the merge compares, in payload wire form (epoch-ms dates, uppercase UUIDs). An optional field that is left out is nil.",
+    "parentalPin compares pinHash only; profile, sportsFollow and recordingServer compare updatedAt too because their policy needs it.",
+    "conflicts: both sides changed a record to different values. merged is the payload the transport writes to the mirror and pushes; fields only the remote payload carries survive."
+  ],
+  "reconcile" : [
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "name" : "unchanged on both sides",
+      "remote" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "value" : null,
+      "verdict" : "noChange"
+    },
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "name" : "local edit is pushed",
+      "remote" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "value" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "name" : "remote edit is pulled",
+      "remote" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "value" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "verdict" : "pullToLocal"
+    },
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : null,
+      "name" : "local deletion is pushed",
+      "remote" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "value" : null,
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "name" : "remote deletion is pulled",
+      "remote" : null,
+      "value" : null,
+      "verdict" : "pullToLocal"
+    },
+    {
+      "base" : null,
+      "collection" : "playlist",
+      "local" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "name" : "created locally",
+      "remote" : null,
+      "value" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : null,
+      "collection" : "playlist",
+      "local" : null,
+      "name" : "created remotely",
+      "remote" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "value" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "verdict" : "pullToLocal"
+    },
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "name" : "same edit on both sides only re-baselines",
+      "remote" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "value" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "name" : "conflicting edits: remote wins",
+      "remote" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "value" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "name" : "local edit survives a remote deletion",
+      "remote" : null,
+      "value" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : null,
+      "name" : "remote edit survives a local deletion",
+      "remote" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "value" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "collection" : "playlist",
+      "local" : null,
+      "name" : "deleted on both sides",
+      "remote" : null,
+      "value" : null,
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : null,
+      "collection" : "playlist",
+      "local" : {
+        "hiddenTabsRaw" : "",
+        "macAddress" : "",
+        "name" : "Harbor Lights (Home)",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "name" : "created differently on both sides: remote wins",
+      "remote" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "value" : {
+        "hiddenTabsRaw" : "series",
+        "macAddress" : "",
+        "name" : "Harbor Lights",
+        "password" : "secret",
+        "serverURL" : "http://provider.example:8080",
+        "sourceTypeRaw" : "xtream",
+        "syncEnabled" : true,
+        "username" : "viewer"
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 1800
+      },
+      "name" : "furthest progress wins",
+      "remote" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000600000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 1200
+      },
+      "value" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000600000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 1800
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : true,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "name" : "watched on either side stays watched",
+      "remote" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 900
+      },
+      "value" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : true,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 900
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "isFavorite" : false,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "name" : "a conflict never loses a favorite",
+      "remote" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 900
+      },
+      "value" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 900
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "isFavorite" : false,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "name" : "an unfavorite that is the only edit wins",
+      "remote" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "value" : {
+        "isFavorite" : false,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "addedToWatchlistDate" : 1760000600000,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000600000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "name" : "the later last-watched date and the earlier watchlist date win",
+      "remote" : {
+        "addedToWatchlistDate" : 1760000000000,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 700
+      },
+      "value" : {
+        "addedToWatchlistDate" : 1760000000000,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000600000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 700
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "favoriteOrder" : 2,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "name" : "both favorite orders set: local wins",
+      "remote" : {
+        "favoriteOrder" : 5,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "value" : {
+        "favoriteOrder" : 2,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 650
+      },
+      "name" : "a concrete favorite order beats none",
+      "remote" : {
+        "favoriteOrder" : 5,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "value" : {
+        "favoriteOrder" : 5,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 650
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 650
+      },
+      "name" : "an explicit vote beats none",
+      "remote" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 1,
+        "watchProgress" : 600
+      },
+      "value" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 1,
+        "watchProgress" : 650
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 1,
+        "watchProgress" : 600
+      },
+      "name" : "an up/down vote clash resolves to down",
+      "remote" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : -1,
+        "watchProgress" : 600
+      },
+      "value" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : -1,
+        "watchProgress" : 600
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "isFavorite" : true,
+        "isHidden" : true,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "name" : "hidden on either side stays hidden",
+      "remote" : {
+        "customOrder" : 3,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "value" : {
+        "customOrder" : 3,
+        "isFavorite" : true,
+        "isHidden" : true,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : {
+        "customOrder" : 1,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "name" : "both custom orders set: local wins",
+      "remote" : {
+        "customOrder" : 4,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "value" : {
+        "customOrder" : 1,
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "collection" : "content",
+      "local" : null,
+      "name" : "a cleared item deletes its record",
+      "remote" : {
+        "isFavorite" : true,
+        "isHidden" : false,
+        "isWatched" : false,
+        "lastWatchedDate" : 1760000000000,
+        "recommendationVoteRaw" : 0,
+        "watchProgress" : 600
+      },
+      "value" : null,
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : {
+        "isEnabled" : true,
+        "name" : "Meadow Guide",
+        "url" : "https://guide.example/xmltv.xml.gz"
+      },
+      "collection" : "epgSource",
+      "local" : {
+        "isEnabled" : false,
+        "name" : "Meadow Guide",
+        "url" : "https://guide.example/xmltv.xml.gz"
+      },
+      "name" : "conflicting edits: remote wins",
+      "remote" : {
+        "isEnabled" : true,
+        "name" : "Meadow Guide HD",
+        "url" : "https://guide.example/xmltv.xml.gz"
+      },
+      "value" : {
+        "isEnabled" : true,
+        "name" : "Meadow Guide HD",
+        "url" : "https://guide.example/xmltv.xml.gz"
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "pinHash" : "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      },
+      "collection" : "parentalPin",
+      "local" : {
+        "pinHash" : "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210"
+      },
+      "name" : "conflicting PINs: remote wins",
+      "remote" : {
+        "pinHash" : "00112233aabbccdd00112233aabbccdd00112233aabbccdd00112233aabbccdd"
+      },
+      "value" : {
+        "pinHash" : "00112233aabbccdd00112233aabbccdd00112233aabbccdd00112233aabbccdd"
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "pinHash" : "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      },
+      "collection" : "parentalPin",
+      "local" : null,
+      "name" : "a PIN turned off is pushed as a deletion",
+      "remote" : {
+        "pinHash" : "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      },
+      "value" : null,
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : {
+        "isRestricted" : true
+      },
+      "collection" : "categoryRestriction",
+      "local" : null,
+      "name" : "a lifted restriction is pushed as a deletion",
+      "remote" : {
+        "isRestricted" : true
+      },
+      "value" : null,
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : null,
+      "collection" : "categoryRestriction",
+      "local" : {
+        "isRestricted" : true
+      },
+      "name" : "restricted on both sides",
+      "remote" : {
+        "isRestricted" : true
+      },
+      "value" : {
+        "isRestricted" : true
+      },
+      "verdict" : "pushToRemote"
+    },
+    {
+      "base" : {
+        "showsFavorites" : true,
+        "showsRecentlyWatched" : true
+      },
+      "collection" : "liveTVPrefs",
+      "local" : {
+        "showsFavorites" : false,
+        "showsRecentlyWatched" : true
+      },
+      "name" : "conflicting switches: remote wins",
+      "remote" : {
+        "showsFavorites" : true,
+        "showsRecentlyWatched" : false
+      },
+      "value" : {
+        "showsFavorites" : true,
+        "showsRecentlyWatched" : false
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1759500000000
+      },
+      "collection" : "profile",
+      "local" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor Room",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000600000
+      },
+      "name" : "newer local edit wins",
+      "remote" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 4,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000000000
+      },
+      "value" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor Room",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000600000
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1759500000000
+      },
+      "collection" : "profile",
+      "local" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor Room",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000000000
+      },
+      "name" : "newer remote edit wins",
+      "remote" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 4,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000600000
+      },
+      "value" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 4,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000600000
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1759500000000
+      },
+      "collection" : "profile",
+      "local" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor Room",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000600000
+      },
+      "name" : "an exact updatedAt tie: remote wins",
+      "remote" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 4,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000600000
+      },
+      "value" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 4,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000600000
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1759500000000
+      },
+      "collection" : "profile",
+      "local" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : true,
+        "name" : "Harbor",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000000000
+      },
+      "name" : "isChild true from the older local side survives",
+      "remote" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor Room",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000600000
+      },
+      "value" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : true,
+        "name" : "Harbor Room",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000600000
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1759500000000
+      },
+      "collection" : "profile",
+      "local" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : false,
+        "name" : "Harbor",
+        "sortOrder" : 1,
+        "symbolName" : "moon.fill",
+        "updatedAt" : 1760000600000
+      },
+      "name" : "isChild true from the older remote side survives",
+      "remote" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : true,
+        "name" : "Harbor",
+        "sortOrder" : 1,
+        "symbolName" : "star.fill",
+        "updatedAt" : 1760000000000
+      },
+      "value" : {
+        "colorRaw" : "teal",
+        "createdAt" : 1759000000000,
+        "isChild" : true,
+        "name" : "Harbor",
+        "sortOrder" : 1,
+        "symbolName" : "moon.fill",
+        "updatedAt" : 1760000600000
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "kindRaw" : "team",
+        "sortOrder" : 0,
+        "updatedAt" : 1759500000000
+      },
+      "collection" : "sportsFollow",
+      "local" : {
+        "kindRaw" : "team",
+        "sortOrder" : 2,
+        "updatedAt" : 1760000600000
+      },
+      "name" : "newer local edit wins",
+      "remote" : {
+        "kindRaw" : "team",
+        "sortOrder" : 5,
+        "updatedAt" : 1760000000000
+      },
+      "value" : {
+        "kindRaw" : "team",
+        "sortOrder" : 2,
+        "updatedAt" : 1760000600000
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "kindRaw" : "team",
+        "sortOrder" : 0,
+        "updatedAt" : 1759500000000
+      },
+      "collection" : "sportsFollow",
+      "local" : {
+        "kindRaw" : "team",
+        "sortOrder" : 2,
+        "updatedAt" : 1760000600000
+      },
+      "name" : "an exact updatedAt tie: remote wins",
+      "remote" : {
+        "kindRaw" : "team",
+        "sortOrder" : 5,
+        "updatedAt" : 1760000600000
+      },
+      "value" : {
+        "kindRaw" : "team",
+        "sortOrder" : 5,
+        "updatedAt" : 1760000600000
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "baseURL" : "http://recorder.example:8089",
+        "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD03",
+        "isEnabled" : true,
+        "kindRaw" : "lumeRecorder",
+        "name" : "Basement Recorder",
+        "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+        "token" : "fictional-token-1",
+        "updatedAt" : 1759500000000
+      },
+      "collection" : "recordingServer",
+      "local" : {
+        "baseURL" : "http://recorder.example:8089",
+        "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD04",
+        "isEnabled" : true,
+        "kindRaw" : "lumeRecorder",
+        "name" : "Basement Recorder",
+        "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+        "token" : "fictional-token-2",
+        "updatedAt" : 1760000600000
+      },
+      "name" : "newer local edit wins as a whole record",
+      "remote" : {
+        "baseURL" : "http://recorder.example:8089",
+        "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD03",
+        "isEnabled" : true,
+        "kindRaw" : "lumeRecorder",
+        "name" : "Attic Recorder",
+        "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+        "token" : "fictional-token-1",
+        "updatedAt" : 1760000000000
+      },
+      "value" : {
+        "baseURL" : "http://recorder.example:8089",
+        "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD04",
+        "isEnabled" : true,
+        "kindRaw" : "lumeRecorder",
+        "name" : "Basement Recorder",
+        "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+        "token" : "fictional-token-2",
+        "updatedAt" : 1760000600000
+      },
+      "verdict" : "writeBoth"
+    },
+    {
+      "base" : {
+        "baseURL" : "http://recorder.example:8089",
+        "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD03",
+        "isEnabled" : true,
+        "kindRaw" : "lumeRecorder",
+        "name" : "Basement Recorder",
+        "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+        "token" : "fictional-token-1",
+        "updatedAt" : 1759500000000
+      },
+      "collection" : "recordingServer",
+      "local" : {
+        "baseURL" : "http://recorder.example:8089",
+        "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD04",
+        "isEnabled" : true,
+        "kindRaw" : "lumeRecorder",
+        "name" : "Basement Recorder",
+        "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+        "token" : "fictional-token-2",
+        "updatedAt" : 1760000600000
+      },
+      "name" : "an exact updatedAt tie: remote wins",
+      "remote" : {
+        "baseURL" : "http://recorder.example:8089",
+        "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD03",
+        "isEnabled" : true,
+        "kindRaw" : "lumeRecorder",
+        "name" : "Attic Recorder",
+        "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+        "token" : "fictional-token-1",
+        "updatedAt" : 1760000600000
+      },
+      "value" : {
+        "baseURL" : "http://recorder.example:8089",
+        "deviceID" : "0A1B2C3D-0000-4000-8000-00000000DD03",
+        "isEnabled" : true,
+        "kindRaw" : "lumeRecorder",
+        "name" : "Attic Recorder",
+        "serverID" : "0A1B2C3D-0000-4000-8000-00000000DD02",
+        "token" : "fictional-token-1",
+        "updatedAt" : 1760000600000
+      },
+      "verdict" : "writeBoth"
+    }
+  ]
+}

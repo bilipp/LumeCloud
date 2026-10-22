@@ -1,0 +1,54 @@
+{
+  "format" : "lume-cloud-payload-vectors",
+  "notes" : [
+    "canonicalPayload is normative: the exact RFC 8785 plaintext the codec produces for the model. payload is the same value, pretty-printed for reading.",
+    "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))) with the keys derived from rootKey, the root key of crypto.json.",
+    "Dates are epoch milliseconds, UUIDs uppercase. A nil profile in a logical key is the literal none.",
+    "previousCanonicalPayload: the last-synced bytes of the same record.",
+    "Data fields and top-level members this build doesn't know carry over from previousCanonicalPayload unchanged; known fields (here updatedAt) take the model's value."
+  ],
+  "records" : [
+    {
+      "canonicalPayload" : "{\"data\":{\"pinHash\":\"48befc0b8d04c34cc22c78fdfe360a4412d8a2fef9e6fd9c5bf456b71aa770e6\",\"updatedAt\":1760000123456},\"key\":\"parentalPin\",\"type\":\"parentalPin\",\"v\":1}",
+      "logicalKey" : "parentalPin",
+      "name" : "PIN 1234",
+      "payload" : {
+        "data" : {
+          "pinHash" : "48befc0b8d04c34cc22c78fdfe360a4412d8a2fef9e6fd9c5bf456b71aa770e6",
+          "updatedAt" : 1760000123456
+        },
+        "key" : "parentalPin",
+        "type" : "parentalPin",
+        "v" : 1
+      },
+      "rid" : "lf5jGfPpM1_LXRecAdDENMDnQPLm5fckCTv4PUaUPvY"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"pinHash\":\"48befc0b8d04c34cc22c78fdfe360a4412d8a2fef9e6fd9c5bf456b71aa770e6\",\"updatedAt\":1760000123456},\"futureMeta\":\"kept\",\"key\":\"parentalPin\",\"type\":\"parentalPin\",\"v\":1}",
+      "logicalKey" : "parentalPin",
+      "name" : "unknown data survives a re-encode",
+      "payload" : {
+        "data" : {
+          "futureField" : {
+            "nested" : [
+              "é",
+              "a/b",
+              1e-05,
+              1e+21
+            ]
+          },
+          "pinHash" : "48befc0b8d04c34cc22c78fdfe360a4412d8a2fef9e6fd9c5bf456b71aa770e6",
+          "updatedAt" : 1760000123456
+        },
+        "futureMeta" : "kept",
+        "key" : "parentalPin",
+        "type" : "parentalPin",
+        "v" : 1
+      },
+      "previousCanonicalPayload" : "{\"data\":{\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"pinHash\":\"48befc0b8d04c34cc22c78fdfe360a4412d8a2fef9e6fd9c5bf456b71aa770e6\",\"updatedAt\":1759000000000},\"futureMeta\":\"kept\",\"key\":\"parentalPin\",\"type\":\"parentalPin\",\"v\":1}",
+      "rid" : "lf5jGfPpM1_LXRecAdDENMDnQPLm5fckCTv4PUaUPvY"
+    }
+  ],
+  "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "type" : "parentalPin"
+}

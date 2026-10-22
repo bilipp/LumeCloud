@@ -1,0 +1,56 @@
+{
+  "format" : "lume-cloud-payload-vectors",
+  "notes" : [
+    "canonicalPayload is normative: the exact RFC 8785 plaintext the codec produces for the model. payload is the same value, pretty-printed for reading.",
+    "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))) with the keys derived from rootKey, the root key of crypto.json.",
+    "Dates are epoch milliseconds, UUIDs uppercase. A nil profile in a logical key is the literal none.",
+    "previousCanonicalPayload: the last-synced bytes of the same record.",
+    "Data fields and top-level members this build doesn't know carry over from previousCanonicalPayload unchanged; known fields (here updatedAt) take the model's value."
+  ],
+  "records" : [
+    {
+      "canonicalPayload" : "{\"data\":{\"categoryID\":\"0A1B2C3D-0000-4000-8000-00000000AB01-vod-12\",\"isRestricted\":true,\"updatedAt\":1760000123456},\"key\":\"categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-vod-12\",\"type\":\"categoryRestriction\",\"v\":1}",
+      "logicalKey" : "categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-vod-12",
+      "name" : "restricted movie category",
+      "payload" : {
+        "data" : {
+          "categoryID" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-12",
+          "isRestricted" : true,
+          "updatedAt" : 1760000123456
+        },
+        "key" : "categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-vod-12",
+        "type" : "categoryRestriction",
+        "v" : 1
+      },
+      "rid" : "UWy4OP2bGvzZyAgvzyfrWJho9xE-KEcrncLxMgRzAdA"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"categoryID\":\"0A1B2C3D-0000-4000-8000-00000000AB01-vod-12\",\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"isRestricted\":true,\"updatedAt\":1760000123456},\"futureMeta\":\"kept\",\"key\":\"categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-vod-12\",\"type\":\"categoryRestriction\",\"v\":1}",
+      "logicalKey" : "categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-vod-12",
+      "name" : "unknown data survives a re-encode",
+      "payload" : {
+        "data" : {
+          "categoryID" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-12",
+          "futureField" : {
+            "nested" : [
+              "é",
+              "a/b",
+              1e-05,
+              1e+21
+            ]
+          },
+          "isRestricted" : true,
+          "updatedAt" : 1760000123456
+        },
+        "futureMeta" : "kept",
+        "key" : "categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-vod-12",
+        "type" : "categoryRestriction",
+        "v" : 1
+      },
+      "previousCanonicalPayload" : "{\"data\":{\"categoryID\":\"0A1B2C3D-0000-4000-8000-00000000AB01-vod-12\",\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"isRestricted\":true,\"updatedAt\":1759000000000},\"futureMeta\":\"kept\",\"key\":\"categoryRestriction/0A1B2C3D-0000-4000-8000-00000000AB01-vod-12\",\"type\":\"categoryRestriction\",\"v\":1}",
+      "rid" : "UWy4OP2bGvzZyAgvzyfrWJho9xE-KEcrncLxMgRzAdA"
+    }
+  ],
+  "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "type" : "categoryRestriction"
+}

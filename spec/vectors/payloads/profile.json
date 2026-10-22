@@ -1,0 +1,87 @@
+{
+  "format" : "lume-cloud-payload-vectors",
+  "notes" : [
+    "canonicalPayload is normative: the exact RFC 8785 plaintext the codec produces for the model. payload is the same value, pretty-printed for reading.",
+    "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))) with the keys derived from rootKey, the root key of crypto.json.",
+    "Dates are epoch milliseconds, UUIDs uppercase. A nil profile in a logical key is the literal none.",
+    "previousCanonicalPayload: the last-synced bytes of the same record.",
+    "Data fields and top-level members this build doesn't know carry over from previousCanonicalPayload unchanged; known fields (here updatedAt) take the model's value."
+  ],
+  "records" : [
+    {
+      "canonicalPayload" : "{\"data\":{\"colorRaw\":\"teal\",\"createdAt\":1760000000000,\"id\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"isChild\":true,\"name\":\"Zoë's \\\"Room\\\"\",\"sortOrder\":1,\"symbolName\":\"star.fill\",\"updatedAt\":1760000123456},\"key\":\"profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"type\":\"profile\",\"v\":1}",
+      "logicalKey" : "profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+      "name" : "child profile",
+      "payload" : {
+        "data" : {
+          "colorRaw" : "teal",
+          "createdAt" : 1760000000000,
+          "id" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "isChild" : true,
+          "name" : "Zoë's \"Room\"",
+          "sortOrder" : 1,
+          "symbolName" : "star.fill",
+          "updatedAt" : 1760000123456
+        },
+        "key" : "profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+        "type" : "profile",
+        "v" : 1
+      },
+      "rid" : "PL16O2-5dNWbrjCBeq5bS6zLK5jgKjVNTfKR_6h2dNI"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"colorRaw\":\"blue\",\"createdAt\":1760000000000,\"id\":\"00000000-0000-0000-0000-0000DEFA0117\",\"isChild\":false,\"name\":\"Harbor\",\"sortOrder\":0,\"symbolName\":\"person.crop.circle.fill\",\"updatedAt\":1760000000000},\"key\":\"profile/00000000-0000-0000-0000-0000DEFA0117\",\"type\":\"profile\",\"v\":1}",
+      "logicalKey" : "profile/00000000-0000-0000-0000-0000DEFA0117",
+      "name" : "default profile",
+      "payload" : {
+        "data" : {
+          "colorRaw" : "blue",
+          "createdAt" : 1760000000000,
+          "id" : "00000000-0000-0000-0000-0000DEFA0117",
+          "isChild" : false,
+          "name" : "Harbor",
+          "sortOrder" : 0,
+          "symbolName" : "person.crop.circle.fill",
+          "updatedAt" : 1760000000000
+        },
+        "key" : "profile/00000000-0000-0000-0000-0000DEFA0117",
+        "type" : "profile",
+        "v" : 1
+      },
+      "rid" : "FcEZpHhNN22cOkBf85dwVi1v3BehVOCypsjrFxuRwys"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"colorRaw\":\"teal\",\"createdAt\":1760000000000,\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"id\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"isChild\":true,\"name\":\"Zoë's \\\"Room\\\"\",\"sortOrder\":1,\"symbolName\":\"star.fill\",\"updatedAt\":1760000123456},\"futureMeta\":\"kept\",\"key\":\"profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"type\":\"profile\",\"v\":1}",
+      "logicalKey" : "profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+      "name" : "unknown data survives a re-encode",
+      "payload" : {
+        "data" : {
+          "colorRaw" : "teal",
+          "createdAt" : 1760000000000,
+          "futureField" : {
+            "nested" : [
+              "é",
+              "a/b",
+              1e-05,
+              1e+21
+            ]
+          },
+          "id" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "isChild" : true,
+          "name" : "Zoë's \"Room\"",
+          "sortOrder" : 1,
+          "symbolName" : "star.fill",
+          "updatedAt" : 1760000123456
+        },
+        "futureMeta" : "kept",
+        "key" : "profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+        "type" : "profile",
+        "v" : 1
+      },
+      "previousCanonicalPayload" : "{\"data\":{\"colorRaw\":\"teal\",\"createdAt\":1760000000000,\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"id\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"isChild\":true,\"name\":\"Zoë's \\\"Room\\\"\",\"sortOrder\":1,\"symbolName\":\"star.fill\",\"updatedAt\":1759000000000},\"futureMeta\":\"kept\",\"key\":\"profile/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"type\":\"profile\",\"v\":1}",
+      "rid" : "PL16O2-5dNWbrjCBeq5bS6zLK5jgKjVNTfKR_6h2dNI"
+    }
+  ],
+  "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "type" : "profile"
+}

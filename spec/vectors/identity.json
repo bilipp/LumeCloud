@@ -1,0 +1,586 @@
+{
+  "categories" : [
+    {
+      "apiId" : "5",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+      "kind" : "live",
+      "source" : "xtream"
+    },
+    {
+      "apiId" : "12",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-12",
+      "kind" : "vod",
+      "source" : "xtream"
+    },
+    {
+      "apiId" : "30",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-30",
+      "kind" : "series",
+      "source" : "xtream"
+    },
+    {
+      "apiId" : "5.0",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-5.0",
+      "kind" : "vod",
+      "source" : "xtream"
+    },
+    {
+      "apiId" : "News",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-News",
+      "kind" : "live",
+      "source" : "m3u"
+    },
+    {
+      "apiId" : "News",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-News",
+      "kind" : "vod",
+      "source" : "m3u"
+    },
+    {
+      "apiId" : " Harbor Sports ",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-live- Harbor Sports ",
+      "kind" : "live",
+      "source" : "m3u"
+    },
+    {
+      "apiId" : "Uncategorized",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-Uncategorized",
+      "kind" : "live",
+      "source" : "m3u"
+    },
+    {
+      "apiId" : "7",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-7",
+      "kind" : "live",
+      "source" : "stalker"
+    },
+    {
+      "apiId" : "*",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-*",
+      "kind" : "vod",
+      "source" : "stalker"
+    },
+    {
+      "apiId" : "42",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-42",
+      "kind" : "series",
+      "source" : "stalker"
+    },
+    {
+      "apiId" : "Harbor Films",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-Harbor Films",
+      "kind" : "vod",
+      "source" : "webdav"
+    },
+    {
+      "apiId" : "Harbor Films",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-Harbor Films",
+      "kind" : "series",
+      "source" : "webdav"
+    },
+    {
+      "apiId" : "f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "kind" : "vod",
+      "source" : "jellyfin"
+    },
+    {
+      "apiId" : "f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "kind" : "series",
+      "source" : "jellyfin"
+    },
+    {
+      "apiId" : "f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "kind" : "vod",
+      "source" : "emby"
+    },
+    {
+      "apiId" : "f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "kind" : "series",
+      "source" : "emby"
+    },
+    {
+      "apiId" : "f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "kind" : "vod",
+      "source" : "silo"
+    },
+    {
+      "apiId" : "f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "kind" : "series",
+      "source" : "silo"
+    },
+    {
+      "apiId" : "1",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-vod-1",
+      "kind" : "vod",
+      "source" : "plex"
+    },
+    {
+      "apiId" : "2",
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-2",
+      "kind" : "series",
+      "source" : "plex"
+    }
+  ],
+  "defaultProfileId" : "00000000-0000-0000-0000-0000DEFA0117",
+  "format" : "lume-cloud-identity-vectors",
+  "hashes" : [
+    {
+      "hash64" : "14695981039346656037",
+      "input" : "",
+      "inputUTF8Hex" : "",
+      "key" : "33niihzj4ux45",
+      "mediaServerHash" : "5472609002491880229",
+      "numericId" : "5472609002491880229"
+    },
+    {
+      "hash64" : "10570193386124002597",
+      "input" : "http://provider.example:8080/live/viewer/secret/1001.ts",
+      "inputUTF8Hex" : "687474703a2f2f70726f76696465722e6578616d706c653a383038302f6c6976652f7669657765722f7365637265742f313030312e7473",
+      "key" : "28b2cu5e8jlt1",
+      "mediaServerHash" : "1346821349269226789",
+      "numericId" : "1346821349269226789"
+    },
+    {
+      "hash64" : "6118376827281151520",
+      "input" : "http://provider.example:8080/movie/viewer/secret/2002.mkv",
+      "inputUTF8Hex" : "687474703a2f2f70726f76696465722e6578616d706c653a383038302f6d6f7669652f7669657765722f7365637265742f323030322e6d6b76",
+      "key" : "1ahfzknoyuqzk",
+      "mediaServerHash" : "6118376827281151520",
+      "numericId" : "6118376827281151520"
+    },
+    {
+      "hash64" : "17525265595655007371",
+      "input" : "http://provider.example/series/viewer/secret/3003.mp4?token=abc&x=1",
+      "inputUTF8Hex" : "687474703a2f2f70726f76696465722e6578616d706c652f7365726965732f7669657765722f7365637265742f333030332e6d70343f746f6b656e3d61626326783d31",
+      "key" : "3p5cs65dcdbpn",
+      "mediaServerHash" : "8301893558800231563",
+      "numericId" : "8301893558800231563"
+    },
+    {
+      "hash64" : "14173147252005446841",
+      "input" : "Meadow Stories",
+      "inputUTF8Hex" : "4d6561646f772053746f72696573",
+      "key" : "2zoihe1fu99yx",
+      "mediaServerHash" : "4949775215150671033",
+      "numericId" : "4949775215150671033"
+    },
+    {
+      "hash64" : "2539900739344262521",
+      "input" : "meadow stories",
+      "inputUTF8Hex" : "6d6561646f772073746f72696573",
+      "key" : "jaovo3ljtxfd",
+      "mediaServerHash" : "2539900739344262521",
+      "numericId" : "2539900739344262521"
+    },
+    {
+      "hash64" : "9813867384756561817",
+      "input" : " Meadow Stories ",
+      "inputUTF8Hex" : "204d6561646f772053746f7269657320",
+      "key" : "22k79n8zl1fvd",
+      "mediaServerHash" : "590495347901786009",
+      "numericId" : "590495347901786009"
+    },
+    {
+      "hash64" : "11369524127153600550",
+      "input" : "Zoë Harbor",
+      "inputUTF8Hex" : "5a6fc3ab20486172626f72",
+      "key" : "2edovxqgtf8yu",
+      "mediaServerHash" : "2146152090298824742",
+      "numericId" : "2146152090298824742"
+    },
+    {
+      "hash64" : "1099198115126453696",
+      "input" : "Zoé Harbor",
+      "inputUTF8Hex" : "5a6f65cc8120486172626f72",
+      "key" : "8cn57myzzfsw",
+      "mediaServerHash" : "1099198115126453696",
+      "numericId" : "1099198115126453696"
+    },
+    {
+      "hash64" : "2010419953527566815",
+      "input" : " Harbor ",
+      "inputUTF8Hex" : "c2a0486172626f72c2a0",
+      "key" : "f9vee8k9c927",
+      "mediaServerHash" : "2010419953527566815",
+      "numericId" : "2010419953527566815"
+    },
+    {
+      "hash64" : "7858567612303816993",
+      "input" : "line\tbreak\n",
+      "inputUTF8Hex" : "6c696e6509627265616b0a",
+      "key" : "1npelq21eqwip",
+      "mediaServerHash" : "7858567612303816993",
+      "numericId" : "7858567612303816993"
+    },
+    {
+      "hash64" : "9331029867571218046",
+      "input" : "海辺の物語",
+      "inputUTF8Hex" : "e6b5b7e8bebae381aee789a9e8aa9e",
+      "key" : "1yw5213r05bpa",
+      "mediaServerHash" : "107657830716442238",
+      "numericId" : "107657830716442238"
+    },
+    {
+      "hash64" : "8425005958988883913",
+      "input" : "قناة الواحة",
+      "inputUTF8Hex" : "d982d986d8a7d8a920d8a7d984d988d8a7d8add8a9",
+      "key" : "1s0bzcy5ibljd",
+      "mediaServerHash" : "8425005958988883913",
+      "numericId" : "8425005958988883913"
+    },
+    {
+      "hash64" : "7305175192649614038",
+      "input" : "📺 Lume",
+      "inputUTF8Hex" : "f09f93ba204c756d65",
+      "key" : "1ji1ohe2dht5i",
+      "mediaServerHash" : "7305175192649614038",
+      "numericId" : "7305175192649614038"
+    }
+  ],
+  "items" : [
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+      "input" : {
+        "stream_id" : "1001"
+      },
+      "kind" : "movie",
+      "source" : "xtream"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-30",
+      "input" : {
+        "series_id" : "30"
+      },
+      "kind" : "series",
+      "source" : "xtream"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-5005",
+      "input" : {
+        "stream_id" : "5005"
+      },
+      "kind" : "live",
+      "source" : "xtream"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-30-episode-88001",
+      "input" : {
+        "episode.id" : "88001",
+        "series_id" : "30"
+      },
+      "kind" : "episode",
+      "source" : "xtream"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-movie-1ahfzknoyuqzk",
+      "input" : {
+        "url" : "http://provider.example:8080/movie/viewer/secret/2002.mkv"
+      },
+      "kind" : "movie",
+      "source" : "m3u"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-28b2cu5e8jlt1",
+      "input" : {
+        "url" : "http://provider.example:8080/live/viewer/secret/1001.ts"
+      },
+      "kind" : "live",
+      "source" : "m3u"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-2zoihe1fu99yx",
+      "input" : {
+        "seriesName" : "Meadow Stories"
+      },
+      "kind" : "series",
+      "source" : "m3u"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-2zoihe1fu99yx-episode-3mzfbx9u8wrq6",
+      "input" : {
+        "seriesName" : "Meadow Stories",
+        "url" : "http://provider.example:8080/series/viewer/secret/3003.mp4"
+      },
+      "kind" : "episode",
+      "source" : "m3u"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-movie-123",
+      "input" : {
+        "id" : "123"
+      },
+      "kind" : "movie",
+      "source" : "stalker"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-movie-3833542126551793784",
+      "input" : {
+        "id" : "abc-77"
+      },
+      "kind" : "movie",
+      "source" : "stalker"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-42",
+      "input" : {
+        "id" : "42"
+      },
+      "kind" : "series",
+      "source" : "stalker"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-9001",
+      "input" : {
+        "id" : "9001"
+      },
+      "kind" : "live",
+      "source" : "stalker"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-42-episode-501-3",
+      "input" : {
+        "episodeNum" : "3",
+        "item.id" : "501",
+        "seriesId" : "42"
+      },
+      "kind" : "episode",
+      "source" : "stalker"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-series-42-episode-0-1",
+      "input" : {
+        "episodeNum" : "1",
+        "index" : "0",
+        "seriesId" : "42"
+      },
+      "kind" : "episode",
+      "source" : "stalker"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-jellyfin-a1000000000000000000000000000001",
+      "input" : {
+        "Id" : "a1000000000000000000000000000001"
+      },
+      "kind" : "movie",
+      "source" : "jellyfin"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-jellyfin-5e0000000000000000000000000000b2",
+      "input" : {
+        "Id" : "5e0000000000000000000000000000b2"
+      },
+      "kind" : "series",
+      "source" : "jellyfin"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-jellyfin-episode-e5c0ffee000000000000000000000003",
+      "input" : {
+        "Id" : "e5c0ffee000000000000000000000003"
+      },
+      "kind" : "episode",
+      "source" : "jellyfin"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-jellyfin-name-4949775215150671033",
+      "input" : {
+        "SeriesName" : "Meadow Stories",
+        "note" : "episode whose series is not in the library"
+      },
+      "kind" : "series",
+      "source" : "jellyfin"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-emby-a1000000000000000000000000000001",
+      "input" : {
+        "Id" : "a1000000000000000000000000000001"
+      },
+      "kind" : "movie",
+      "source" : "emby"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-emby-5e0000000000000000000000000000b2",
+      "input" : {
+        "Id" : "5e0000000000000000000000000000b2"
+      },
+      "kind" : "series",
+      "source" : "emby"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-emby-episode-e5c0ffee000000000000000000000003",
+      "input" : {
+        "Id" : "e5c0ffee000000000000000000000003"
+      },
+      "kind" : "episode",
+      "source" : "emby"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-emby-name-4949775215150671033",
+      "input" : {
+        "SeriesName" : "Meadow Stories",
+        "note" : "episode whose series is not in the library"
+      },
+      "kind" : "series",
+      "source" : "emby"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-silo-a1000000000000000000000000000001",
+      "input" : {
+        "Id" : "a1000000000000000000000000000001"
+      },
+      "kind" : "movie",
+      "source" : "silo"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-silo-5e0000000000000000000000000000b2",
+      "input" : {
+        "Id" : "5e0000000000000000000000000000b2"
+      },
+      "kind" : "series",
+      "source" : "silo"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-silo-episode-e5c0ffee000000000000000000000003",
+      "input" : {
+        "Id" : "e5c0ffee000000000000000000000003"
+      },
+      "kind" : "episode",
+      "source" : "silo"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-silo-name-4949775215150671033",
+      "input" : {
+        "SeriesName" : "Meadow Stories",
+        "note" : "episode whose series is not in the library"
+      },
+      "kind" : "series",
+      "source" : "silo"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-plex-52814",
+      "input" : {
+        "ratingKey" : "52814"
+      },
+      "kind" : "movie",
+      "source" : "plex"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-plex-61000",
+      "input" : {
+        "ratingKey" : "61000"
+      },
+      "kind" : "series",
+      "source" : "plex"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-plex-episode-61007",
+      "input" : {
+        "ratingKey" : "61007"
+      },
+      "kind" : "episode",
+      "source" : "plex"
+    },
+    {
+      "id" : "0A1B2C3D-0000-4000-8000-00000000AB01-plex-61000",
+      "input" : {
+        "grandparentRatingKey" : "61000",
+        "note" : "series row of an episode",
+        "ratingKey" : "61007"
+      },
+      "kind" : "series",
+      "source" : "plex"
+    }
+  ],
+  "notes" : [
+    "Every id starts with playlistId: the playlist UUID, uppercase with dashes.",
+    "hash64 is FNV-1a 64 over the raw UTF-8 bytes (no trimming, case folding or normalisation); inputUTF8Hex shows those bytes.",
+    "key is hash64 in unsigned base 36, lowercase. numericId is hash64 with the top bit cleared; mediaServerHash is the same function.",
+    "64-bit values are decimal strings because they exceed the exact-integer range of a JSON number.",
+    "stalkerStreamIds: a positive integer string is its own id, anything else is numericId(input). plexStreamIds: any integer string (no sign check), else mediaServerHash(input).",
+    "Movie categories use the kind vod while movie items use movie.",
+    "M3U categories use the raw group title, untrimmed; an entry without one lands in Uncategorized.",
+    "Media servers (jellyfin, emby, silo) and plex share one id namespace for movies and series."
+  ],
+  "playlistId" : "0A1B2C3D-0000-4000-8000-00000000AB01",
+  "plexStreamIds" : [
+    {
+      "input" : "52814",
+      "streamId" : "52814"
+    },
+    {
+      "input" : "0",
+      "streamId" : "0"
+    },
+    {
+      "input" : "-7",
+      "streamId" : "-7"
+    },
+    {
+      "input" : "+3",
+      "streamId" : "3"
+    },
+    {
+      "input" : "007",
+      "streamId" : "7"
+    },
+    {
+      "input" : "abc",
+      "streamId" : "7430836138530658123"
+    },
+    {
+      "input" : "12.5",
+      "streamId" : "2261995520632798587"
+    }
+  ],
+  "stalkerStreamIds" : [
+    {
+      "input" : "123",
+      "streamId" : "123"
+    },
+    {
+      "input" : "1",
+      "streamId" : "1"
+    },
+    {
+      "input" : "0",
+      "streamId" : "3414763486654340271"
+    },
+    {
+      "input" : "-5",
+      "streamId" : "562966479190349815"
+    },
+    {
+      "input" : "007",
+      "streamId" : "7"
+    },
+    {
+      "input" : "+12",
+      "streamId" : "12"
+    },
+    {
+      "input" : "12.0",
+      "streamId" : "2261998819167683220"
+    },
+    {
+      "input" : " 12",
+      "streamId" : "4861453381065125288"
+    },
+    {
+      "input" : "abc-77",
+      "streamId" : "3833542126551793784"
+    },
+    {
+      "input" : "9223372036854775807",
+      "streamId" : "9223372036854775807"
+    },
+    {
+      "input" : "9223372036854775808",
+      "streamId" : "8633111152023364658"
+    }
+  ]
+}

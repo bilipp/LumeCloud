@@ -1,0 +1,128 @@
+{
+  "format" : "lume-cloud-payload-vectors",
+  "notes" : [
+    "canonicalPayload is normative: the exact RFC 8785 plaintext the codec produces for the model. payload is the same value, pretty-printed for reading.",
+    "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))) with the keys derived from rootKey, the root key of crypto.json.",
+    "Dates are epoch milliseconds, UUIDs uppercase. A nil profile in a logical key is the literal none.",
+    "previousCanonicalPayload: the last-synced bytes of the same record.",
+    "Data fields and top-level members this build doesn't know carry over from previousCanonicalPayload unchanged; known fields (here updatedAt) take the model's value."
+  ],
+  "records" : [
+    {
+      "canonicalPayload" : "{\"data\":{\"addedToWatchlistDate\":null,\"contentId\":\"0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001\",\"customOrder\":null,\"favoriteOrder\":3,\"isFavorite\":true,\"isHidden\":false,\"isWatched\":false,\"kindRaw\":\"movie\",\"lastWatchedDate\":1760000123456,\"profileID\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"recommendationVoteRaw\":-1,\"updatedAt\":1760000123456,\"watchProgress\":1234.5},\"key\":\"content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001\",\"type\":\"content\",\"v\":1}",
+      "logicalKey" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+      "name" : "movie progress and favorite",
+      "payload" : {
+        "data" : {
+          "addedToWatchlistDate" : null,
+          "contentId" : "0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+          "customOrder" : null,
+          "favoriteOrder" : 3,
+          "isFavorite" : true,
+          "isHidden" : false,
+          "isWatched" : false,
+          "kindRaw" : "movie",
+          "lastWatchedDate" : 1760000123456,
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "recommendationVoteRaw" : -1,
+          "updatedAt" : 1760000123456,
+          "watchProgress" : 1234.5
+        },
+        "key" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+        "type" : "content",
+        "v" : 1
+      },
+      "rid" : "Pw_WbXKvRHl_FLha_i5yi_O6EA4diK-Z20IlhkecQO8"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"addedToWatchlistDate\":null,\"contentId\":\"0A1B2C3D-0000-4000-8000-00000000AB01-live-5\",\"customOrder\":2,\"favoriteOrder\":null,\"isFavorite\":false,\"isHidden\":true,\"isWatched\":false,\"kindRaw\":\"category\",\"lastWatchedDate\":null,\"profileID\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"recommendationVoteRaw\":0,\"updatedAt\":1760000123456,\"watchProgress\":0},\"key\":\"content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-live-5\",\"type\":\"content\",\"v\":1}",
+      "logicalKey" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+      "name" : "category visibility and order",
+      "payload" : {
+        "data" : {
+          "addedToWatchlistDate" : null,
+          "contentId" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+          "customOrder" : 2,
+          "favoriteOrder" : null,
+          "isFavorite" : false,
+          "isHidden" : true,
+          "isWatched" : false,
+          "kindRaw" : "category",
+          "lastWatchedDate" : null,
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "recommendationVoteRaw" : 0,
+          "updatedAt" : 1760000123456,
+          "watchProgress" : 0
+        },
+        "key" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-live-5",
+        "type" : "content",
+        "v" : 1
+      },
+      "rid" : "AWZxeENklHbOJrol4qx1tAUZ-xc-7FvsOhGOcdroyYU"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"addedToWatchlistDate\":1760000000000,\"contentId\":\"0A1B2C3D-0000-4000-8000-00000000AB01-live-5005\",\"customOrder\":null,\"favoriteOrder\":null,\"isFavorite\":true,\"isHidden\":false,\"isWatched\":false,\"kindRaw\":\"live\",\"lastWatchedDate\":null,\"profileID\":null,\"recommendationVoteRaw\":0,\"updatedAt\":1760000123456,\"watchProgress\":0},\"key\":\"content/none/0A1B2C3D-0000-4000-8000-00000000AB01-live-5005\",\"type\":\"content\",\"v\":1}",
+      "logicalKey" : "content/none/0A1B2C3D-0000-4000-8000-00000000AB01-live-5005",
+      "name" : "legacy record without a profile",
+      "payload" : {
+        "data" : {
+          "addedToWatchlistDate" : 1760000000000,
+          "contentId" : "0A1B2C3D-0000-4000-8000-00000000AB01-live-5005",
+          "customOrder" : null,
+          "favoriteOrder" : null,
+          "isFavorite" : true,
+          "isHidden" : false,
+          "isWatched" : false,
+          "kindRaw" : "live",
+          "lastWatchedDate" : null,
+          "profileID" : null,
+          "recommendationVoteRaw" : 0,
+          "updatedAt" : 1760000123456,
+          "watchProgress" : 0
+        },
+        "key" : "content/none/0A1B2C3D-0000-4000-8000-00000000AB01-live-5005",
+        "type" : "content",
+        "v" : 1
+      },
+      "rid" : "aYK_QpIiEYy6nf2XI3RwtPH3bcxzt5ajwqTHxwzWHwE"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"addedToWatchlistDate\":null,\"contentId\":\"0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001\",\"customOrder\":null,\"favoriteOrder\":3,\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"isFavorite\":true,\"isHidden\":false,\"isWatched\":false,\"kindRaw\":\"movie\",\"lastWatchedDate\":1760000123456,\"profileID\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"recommendationVoteRaw\":-1,\"updatedAt\":1760000123456,\"watchProgress\":1234.5},\"futureMeta\":\"kept\",\"key\":\"content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001\",\"type\":\"content\",\"v\":1}",
+      "logicalKey" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+      "name" : "unknown data survives a re-encode",
+      "payload" : {
+        "data" : {
+          "addedToWatchlistDate" : null,
+          "contentId" : "0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+          "customOrder" : null,
+          "favoriteOrder" : 3,
+          "futureField" : {
+            "nested" : [
+              "é",
+              "a/b",
+              1e-05,
+              1e+21
+            ]
+          },
+          "isFavorite" : true,
+          "isHidden" : false,
+          "isWatched" : false,
+          "kindRaw" : "movie",
+          "lastWatchedDate" : 1760000123456,
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "recommendationVoteRaw" : -1,
+          "updatedAt" : 1760000123456,
+          "watchProgress" : 1234.5
+        },
+        "futureMeta" : "kept",
+        "key" : "content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001",
+        "type" : "content",
+        "v" : 1
+      },
+      "previousCanonicalPayload" : "{\"data\":{\"addedToWatchlistDate\":null,\"contentId\":\"0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001\",\"customOrder\":null,\"favoriteOrder\":3,\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"isFavorite\":true,\"isHidden\":false,\"isWatched\":false,\"kindRaw\":\"movie\",\"lastWatchedDate\":1760000123456,\"profileID\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"recommendationVoteRaw\":-1,\"updatedAt\":1759000000000,\"watchProgress\":1234.5},\"futureMeta\":\"kept\",\"key\":\"content/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/0A1B2C3D-0000-4000-8000-00000000AB01-movie-1001\",\"type\":\"content\",\"v\":1}",
+      "rid" : "Pw_WbXKvRHl_FLha_i5yi_O6EA4diK-Z20IlhkecQO8"
+    }
+  ],
+  "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "type" : "content"
+}

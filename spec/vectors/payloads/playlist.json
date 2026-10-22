@@ -1,0 +1,96 @@
+{
+  "format" : "lume-cloud-payload-vectors",
+  "notes" : [
+    "canonicalPayload is normative: the exact RFC 8785 plaintext the codec produces for the model. payload is the same value, pretty-printed for reading.",
+    "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))) with the keys derived from rootKey, the root key of crypto.json.",
+    "Dates are epoch milliseconds, UUIDs uppercase. A nil profile in a logical key is the literal none.",
+    "previousCanonicalPayload: the last-synced bytes of the same record.",
+    "Data fields and top-level members this build doesn't know carry over from previousCanonicalPayload unchanged; known fields (here updatedAt) take the model's value."
+  ],
+  "records" : [
+    {
+      "canonicalPayload" : "{\"data\":{\"epgURL\":\"http://provider.example:8080/xmltv.php\",\"hiddenTabsRaw\":\"series,liveTV\",\"id\":\"0A1B2C3D-0000-4000-8000-00000000AB01\",\"macAddress\":\"\",\"name\":\"Harbor Lights\",\"password\":\"secret\",\"serverURL\":\"http://provider.example:8080\",\"sourceTypeRaw\":\"xtream\",\"syncEnabled\":true,\"updatedAt\":1760000123456,\"username\":\"viewer\"},\"key\":\"playlist/0A1B2C3D-0000-4000-8000-00000000AB01\",\"type\":\"playlist\",\"v\":1}",
+      "logicalKey" : "playlist/0A1B2C3D-0000-4000-8000-00000000AB01",
+      "name" : "xtream playlist",
+      "payload" : {
+        "data" : {
+          "epgURL" : "http://provider.example:8080/xmltv.php",
+          "hiddenTabsRaw" : "series,liveTV",
+          "id" : "0A1B2C3D-0000-4000-8000-00000000AB01",
+          "macAddress" : "",
+          "name" : "Harbor Lights",
+          "password" : "secret",
+          "serverURL" : "http://provider.example:8080",
+          "sourceTypeRaw" : "xtream",
+          "syncEnabled" : true,
+          "updatedAt" : 1760000123456,
+          "username" : "viewer"
+        },
+        "key" : "playlist/0A1B2C3D-0000-4000-8000-00000000AB01",
+        "type" : "playlist",
+        "v" : 1
+      },
+      "rid" : "1dWyHOeSOHf4gvduNMnQmUuBFnMW5zchSyfJhyyuPtE"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"epgURL\":null,\"hiddenTabsRaw\":\"\",\"id\":\"0A1B2C3D-0000-4000-8000-00000000AB02\",\"macAddress\":\"00:1A:79:00:00:01\",\"name\":\"Zoë's \\\"Portal\\\"\",\"password\":\"\",\"serverURL\":\"http://portal.example/c/\",\"sourceTypeRaw\":\"stalker\",\"syncEnabled\":false,\"updatedAt\":1760000123456,\"username\":\"\"},\"key\":\"playlist/0A1B2C3D-0000-4000-8000-00000000AB02\",\"type\":\"playlist\",\"v\":1}",
+      "logicalKey" : "playlist/0A1B2C3D-0000-4000-8000-00000000AB02",
+      "name" : "stalker playlist without an EPG URL",
+      "payload" : {
+        "data" : {
+          "epgURL" : null,
+          "hiddenTabsRaw" : "",
+          "id" : "0A1B2C3D-0000-4000-8000-00000000AB02",
+          "macAddress" : "00:1A:79:00:00:01",
+          "name" : "Zoë's \"Portal\"",
+          "password" : "",
+          "serverURL" : "http://portal.example/c/",
+          "sourceTypeRaw" : "stalker",
+          "syncEnabled" : false,
+          "updatedAt" : 1760000123456,
+          "username" : ""
+        },
+        "key" : "playlist/0A1B2C3D-0000-4000-8000-00000000AB02",
+        "type" : "playlist",
+        "v" : 1
+      },
+      "rid" : "yYFUkWeg3-N-HOk2dMd-sCXkrpEriTtqbQSQ5SrpLTI"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"epgURL\":\"http://provider.example:8080/xmltv.php\",\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"hiddenTabsRaw\":\"series,liveTV\",\"id\":\"0A1B2C3D-0000-4000-8000-00000000AB01\",\"macAddress\":\"\",\"name\":\"Harbor Lights\",\"password\":\"secret\",\"serverURL\":\"http://provider.example:8080\",\"sourceTypeRaw\":\"xtream\",\"syncEnabled\":true,\"updatedAt\":1760000123456,\"username\":\"viewer\"},\"futureMeta\":\"kept\",\"key\":\"playlist/0A1B2C3D-0000-4000-8000-00000000AB01\",\"type\":\"playlist\",\"v\":1}",
+      "logicalKey" : "playlist/0A1B2C3D-0000-4000-8000-00000000AB01",
+      "name" : "unknown data survives a re-encode",
+      "payload" : {
+        "data" : {
+          "epgURL" : "http://provider.example:8080/xmltv.php",
+          "futureField" : {
+            "nested" : [
+              "é",
+              "a/b",
+              1e-05,
+              1e+21
+            ]
+          },
+          "hiddenTabsRaw" : "series,liveTV",
+          "id" : "0A1B2C3D-0000-4000-8000-00000000AB01",
+          "macAddress" : "",
+          "name" : "Harbor Lights",
+          "password" : "secret",
+          "serverURL" : "http://provider.example:8080",
+          "sourceTypeRaw" : "xtream",
+          "syncEnabled" : true,
+          "updatedAt" : 1760000123456,
+          "username" : "viewer"
+        },
+        "futureMeta" : "kept",
+        "key" : "playlist/0A1B2C3D-0000-4000-8000-00000000AB01",
+        "type" : "playlist",
+        "v" : 1
+      },
+      "previousCanonicalPayload" : "{\"data\":{\"epgURL\":\"http://provider.example:8080/xmltv.php\",\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"hiddenTabsRaw\":\"series,liveTV\",\"id\":\"0A1B2C3D-0000-4000-8000-00000000AB01\",\"macAddress\":\"\",\"name\":\"Harbor Lights\",\"password\":\"secret\",\"serverURL\":\"http://provider.example:8080\",\"sourceTypeRaw\":\"xtream\",\"syncEnabled\":true,\"updatedAt\":1759000000000,\"username\":\"viewer\"},\"futureMeta\":\"kept\",\"key\":\"playlist/0A1B2C3D-0000-4000-8000-00000000AB01\",\"type\":\"playlist\",\"v\":1}",
+      "rid" : "1dWyHOeSOHf4gvduNMnQmUuBFnMW5zchSyfJhyyuPtE"
+    }
+  ],
+  "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "type" : "playlist"
+}

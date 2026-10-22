@@ -1,0 +1,78 @@
+{
+  "format" : "lume-cloud-payload-vectors",
+  "notes" : [
+    "canonicalPayload is normative: the exact RFC 8785 plaintext the codec produces for the model. payload is the same value, pretty-printed for reading.",
+    "rid = base64url(HMAC-SHA256(idKey, UTF8(logicalKey))) with the keys derived from rootKey, the root key of crypto.json.",
+    "Dates are epoch milliseconds, UUIDs uppercase. A nil profile in a logical key is the literal none.",
+    "previousCanonicalPayload: the last-synced bytes of the same record.",
+    "Data fields and top-level members this build doesn't know carry over from previousCanonicalPayload unchanged; known fields (here updatedAt) take the model's value."
+  ],
+  "records" : [
+    {
+      "canonicalPayload" : "{\"data\":{\"key\":\"demo:soccer/meadow.1:4021\",\"kindRaw\":\"team\",\"profileID\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"sortOrder\":4,\"updatedAt\":1760000123456},\"key\":\"sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021\",\"type\":\"sportsFollow\",\"v\":1}",
+      "logicalKey" : "sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021",
+      "name" : "followed team",
+      "payload" : {
+        "data" : {
+          "key" : "demo:soccer/meadow.1:4021",
+          "kindRaw" : "team",
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "sortOrder" : 4,
+          "updatedAt" : 1760000123456
+        },
+        "key" : "sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021",
+        "type" : "sportsFollow",
+        "v" : 1
+      },
+      "rid" : "Mc9blCKm6aXoZ1pB7oVoeyWiUyoTLy7XVXVOnjz_gB4"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"key\":\"demo:soccer/meadow.1\",\"kindRaw\":\"league\",\"profileID\":null,\"sortOrder\":0,\"updatedAt\":1760000123456},\"key\":\"sportsFollow/none/demo:soccer/meadow.1\",\"type\":\"sportsFollow\",\"v\":1}",
+      "logicalKey" : "sportsFollow/none/demo:soccer/meadow.1",
+      "name" : "league without a profile",
+      "payload" : {
+        "data" : {
+          "key" : "demo:soccer/meadow.1",
+          "kindRaw" : "league",
+          "profileID" : null,
+          "sortOrder" : 0,
+          "updatedAt" : 1760000123456
+        },
+        "key" : "sportsFollow/none/demo:soccer/meadow.1",
+        "type" : "sportsFollow",
+        "v" : 1
+      },
+      "rid" : "37m5DcwHdgX32ST7YlLR2LJ2U1-jXO3QP9GDL1kD2sQ"
+    },
+    {
+      "canonicalPayload" : "{\"data\":{\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"key\":\"demo:soccer/meadow.1:4021\",\"kindRaw\":\"team\",\"profileID\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"sortOrder\":4,\"updatedAt\":1760000123456},\"futureMeta\":\"kept\",\"key\":\"sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021\",\"type\":\"sportsFollow\",\"v\":1}",
+      "logicalKey" : "sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021",
+      "name" : "unknown data survives a re-encode",
+      "payload" : {
+        "data" : {
+          "futureField" : {
+            "nested" : [
+              "é",
+              "a/b",
+              1e-05,
+              1e+21
+            ]
+          },
+          "key" : "demo:soccer/meadow.1:4021",
+          "kindRaw" : "team",
+          "profileID" : "6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D",
+          "sortOrder" : 4,
+          "updatedAt" : 1760000123456
+        },
+        "futureMeta" : "kept",
+        "key" : "sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021",
+        "type" : "sportsFollow",
+        "v" : 1
+      },
+      "previousCanonicalPayload" : "{\"data\":{\"futureField\":{\"nested\":[\"é\",\"a/b\",0.00001,1e+21]},\"key\":\"demo:soccer/meadow.1:4021\",\"kindRaw\":\"team\",\"profileID\":\"6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D\",\"sortOrder\":4,\"updatedAt\":1759000000000},\"futureMeta\":\"kept\",\"key\":\"sportsFollow/6F1B2C3D-4E5F-4A6B-8C7D-9E0F1A2B3C4D/demo:soccer/meadow.1:4021\",\"type\":\"sportsFollow\",\"v\":1}",
+      "rid" : "Mc9blCKm6aXoZ1pB7oVoeyWiUyoTLy7XVXVOnjz_gB4"
+    }
+  ],
+  "rootKey" : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "type" : "sportsFollow"
+}
