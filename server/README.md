@@ -26,6 +26,7 @@ client ──HTTPS / WebSocket──▶ Worker (src/index.ts, router, auth, rate
 | `src/do/signup-guard.ts` | Daily signup counter per IP |
 | `src/lib/` | base64url, auth parsing, IP keying, limits, stubs (jurisdiction), types |
 | `admin/` | Temporary operator Worker for point-in-time restores (not normally deployed) |
+| `scripts/` | `migrate-account.mjs`: copy an account to another server (see below) |
 | `test/` | `@cloudflare/vitest-plugin` tests, run inside workerd |
 
 ## Requirements
@@ -181,6 +182,28 @@ isn't available locally; rehearse on staging first.
 
 The restore restarts the object; the inactivity/compaction alarm is re-armed by
 the next authenticated request on a new UTC day, or by the next alarm.
+
+## Moving an account between servers
+
+`scripts/migrate-account.mjs` copies one account to another server, e.g. from
+staging to production, or from the official instance to a self-hosted one. It
+needs only the account's recovery key: the account id and auth come from the
+root key, and record envelopes are bound to their `rid` only, so ciphertext is
+copied byte for byte without decrypting anything. No dependencies.
+
+```bash
+LUME_RECOVERY_KEY='XXXX-XXXX-…' node scripts/migrate-account.mjs \
+  --from https://cloud-staging.getlume.org --to https://cloud.getlume.org --dry-run
+# then without --dry-run; add --delete-source to remove the source copy afterwards
+```
+
+Without `LUME_RECOVERY_KEY` it asks for the key (hidden input). It creates the
+account on the destination (`--invite` for invite-only servers), pushes every
+live record, verifies that each one arrived unchanged, and only then deletes the
+source when `--delete-source` is given. Rerunning is safe: records already
+identical on the destination are skipped. Records that differ there are only
+replaced with `--overwrite`. Afterwards every device needs the new server URL
+and a full resync.
 
 ## Cost notes
 
