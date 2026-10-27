@@ -132,6 +132,9 @@ function server(baseURL, account, deviceId) {
 			),
 		deleteAccount: () => call("DELETE", "/accounts/me"),
 		push: (records) => call("POST", "/push", { records }),
+		devices: async () => (await call("GET", "/devices")).devices,
+		registerDevice: ({ id, name, platform }) => call("POST", "/devices", { id, name, platform }),
+		revokeDevice: (id) => call("DELETE", `/devices/${id}`),
 
 		/** The full live set as a Map rid → record (§4.3, since=0 paged to the end). */
 		async snapshot() {
@@ -153,6 +156,30 @@ function server(baseURL, account, deviceId) {
 // ---- Migration ----
 
 const log = (...args) => console.error(...args);
+
+/**
+ * Registers the source's devices on the destination (same id, name, platform)
+ * and carries revocations over, so a revoked device stays revoked. A device
+ * revoked on the destination stays revoked: revocation can't be undone (§4.2).
+ */
+async function copyDevices(src, dst) {
+	const existing = new Map((await dst.devices()).map((d) => [d.id, d]));
+	let registered = 0;
+	let revoked = 0;
+	for (const d of await src.devices()) {
+		const there = existing.get(d.id);
+		if (there?.revoked) continue;
+		if (!d.revoked || there === undefined) {
+			await dst.registerDevice(d);
+			if (!d.revoked) registered++;
+		}
+		if (d.revoked) {
+			await dst.revokeDevice(d.id);
+			revoked++;
+		}
+	}
+	log(`Devices: ${registered} registered, ${revoked} revoked on the destination`);
+}
 
 /** Splits push records into requests within the record and byte limits. */
 function batches(records) {
@@ -207,9 +234,12 @@ export async function migrate({ from, to, recoveryKey, invite, overwrite = false
 	const differing = todo.filter((r) => dstRecords.has(r.rid)).length;
 
 	if (dryRun) {
+		const devices = await src.devices();
+		const revoked = devices.filter((d) => d.revoked).length;
 		log(`Dry run: would ${dstExists ? "push into the existing" : "create the"} account and push ${todo.length} records`);
 		if (records.size > todo.length) log(`  ${records.size - todo.length} are already identical on the destination`);
 		if (differing > 0) log(`  ${differing} differ on the destination and need --overwrite`);
+		log(`  and copy ${devices.length - revoked} active and ${revoked} revoked devices`);
 		return { ok: true, dryRun: true };
 	}
 
@@ -262,6 +292,7 @@ export async function migrate({ from, to, recoveryKey, invite, overwrite = false
 		return { ok: false, pushed, missing: missing.map((r) => r.rid), conflicts };
 	}
 	log(`Verified: all ${records.size} records are on the destination (${after.size} live there in total)`);
+	await copyDevices(src, dst);
 
 	if (deleteSource) {
 		await src.deleteAccount();

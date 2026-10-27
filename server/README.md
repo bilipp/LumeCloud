@@ -199,8 +199,9 @@ LUME_RECOVERY_KEY='XXXX-XXXX-…' node scripts/migrate-account.mjs \
 
 Without `LUME_RECOVERY_KEY` it asks for the key (hidden input). It creates the
 account on the destination (`--invite` for invite-only servers), pushes every
-live record, verifies that each one arrived unchanged, and only then deletes the
-source when `--delete-source` is given. Rerunning is safe: records already
+live record, verifies that each one arrived unchanged, registers the source's
+devices there (revoked ones stay revoked; `createdAt`/`lastSeen` restart), and
+only then deletes the source when `--delete-source` is given. Rerunning is safe: records already
 identical on the destination are skipped. Records that differ there are only
 replaced with `--overwrite`. Afterwards every device needs the new server URL
 and a full resync.
