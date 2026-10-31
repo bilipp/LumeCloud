@@ -1,0 +1,13 @@
+# Reverse proxy for the Docker setup (compose.yaml, profile "caddy").
+# Caddy obtains a certificate for LUME_DOMAIN automatically; the domain's DNS
+# must point at this host and ports 80/443 must be reachable.
+
+{$LUME_DOMAIN} {
+	reverse_proxy lume-cloud:8787 {
+		# The server keys per-IP limits on CF-Connecting-IP. Overwrite it so
+		# clients can't pick their own. Behind another proxy (e.g. Cloudflare),
+		# add a global `servers { trusted_proxies … }` block so {client_ip}
+		# resolves to the real client.
+		header_up CF-Connecting-IP {client_ip}
+	}
+}

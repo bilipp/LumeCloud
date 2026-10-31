@@ -28,6 +28,7 @@ client ──HTTPS / WebSocket──▶ Worker (src/index.ts, router, auth, rate
 | `admin/` | Temporary operator Worker for point-in-time restores (not normally deployed) |
 | `scripts/` | `migrate-account.mjs`: copy an account to another server (see below) |
 | `test/` | `@cloudflare/vitest-plugin` tests, run inside workerd |
+| `Dockerfile`, `docker/`, `compose.yaml`, `Caddyfile` | Self-hosting on plain workerd (see [Docker](#docker)) |
 
 ## Requirements
 
@@ -129,21 +130,126 @@ IPs.
 
 ## Self-hosting
 
-Anyone can run their own instance on their own Cloudflare account; the Workers
-Free plan is plenty for a household (SQLite-backed Durable Objects are
-available on Free).
+Anyone can run their own instance, either on their own Cloudflare account or
+on their own hardware with [Docker](#docker). On Cloudflare, the Workers Free
+plan is plenty for a household (SQLite-backed Durable Objects are available on
+Free).
 
 1. Fork/clone, `cd server && npm install`.
 2. In `wrangler.jsonc`, give the `production` env your own `name`, your own
    domain in `routes`, and your own rate-limit `namespace_id`s.
-3. For a private instance set `"SIGNUP": "invite"` and
-   `npx wrangler secret put INVITE_CODE --env production`.
+3. Choose `SIGNUP`. With `"invite"`, also
+   `npx wrangler secret put INVITE_CODE --env production`. The apps can't send
+   an invite code yet, so on an invite server they can't create accounts; see
+   "Open or invite?" in the [top-level README](../README.md#configuration).
 4. Keep `DO_JURISDICTION` at `eu` unless you have a reason to pick another
    jurisdiction, and decide **before** the first account is created.
-5. `npm run deploy:production`, then enter your URL in the app.
+5. `npm run deploy:production`, then build the apps with `LUME_CLOUD_URL` set
+   to your URL (there is no in-app setting; see
+   [Connecting the app](../README.md#connecting-the-app)).
 
-There is no Docker image. Running workerd on your own hardware is possible in
-principle but not supported.
+## Docker
+
+The image runs the same Worker on [workerd](https://github.com/cloudflare/workerd),
+the open-source Workers runtime, without a Cloudflare account. Quick start with
+Compose (from this directory):
+
+```bash
+cp .env.example .env                      # set SIGNUP, INVITE_CODE, LUME_DOMAIN
+docker compose --profile caddy up -d      # server + Caddy with automatic HTTPS
+docker compose up -d                      # or: server only, on 127.0.0.1:8787
+```
+
+Without Compose:
+
+```bash
+docker build -t lume-cloud --build-arg VERSION=$(git describe --tags --always) .
+docker run -d --name lume-cloud --restart unless-stopped \
+  -p 127.0.0.1:8787:8787 -v lume-data:/data -e SIGNUP=open lume-cloud
+```
+
+There is no prebuilt image; build it from the checkout you run. It builds for
+the host's architecture (amd64 or arm64).
+
+### How the image works
+
+- **Build:** `wrangler deploy --dry-run` bundles `src/` into one module, exactly
+  as a real deploy would, and the `workerd` binary is taken from the same
+  `node_modules`, so the runtime version matches `package-lock.json`.
+- **Runtime:** `debian:bookworm-slim` with only `workerd`, the bundle,
+  [`docker/config.capnp`](docker/config.capnp) and
+  [`docker/ratelimit.js`](docker/ratelimit.js). It runs as an unprivileged
+  user and listens on port 8787. A `HEALTHCHECK` polls `/healthz`.
+- **Storage:** every Durable Object is a SQLite file under `/data`, one
+  directory per class (`lume-cloud-AccountDO/`, …). Alarms (inactivity purge,
+  compaction, pairing expiry) are kept there too and survive restarts.
+- **Configuration:** `SIGNUP`, `INVITE_CODE` and `VERSION` come from the
+  container environment. Without `SIGNUP` the server is invite-only, and
+  without `INVITE_CODE` too, signup is closed (fail closed).
+  `DO_JURISDICTION` is fixed to `none`.
+- **Rate limits:** same limits and keys as on Cloudflare (table above), counted
+  in memory by `docker/ratelimit.js`. Counters reset on restart. The daily
+  signup cap lives in `SignupGuardDO` and is persisted.
+- **Logs:** the same one-JSON-line-per-request log, on stdout
+  (`docker compose logs -f lume-cloud`).
+
+`docker/config.capnp` mirrors the top-level bindings of `wrangler.jsonc`.
+When you add a binding or a Durable Object class, or change a rate limit,
+change both. Never change a class's `uniqueKey`: it names the directory and
+seeds the object ids, so every account would become unreachable.
+
+### Client IP and the reverse proxy
+
+workerd doesn't expose the peer address, so per-IP limits (signup, pairing)
+read the `CF-Connecting-IP` header, as on Cloudflare. The proxy in front of
+the container must set it and overwrite any value the client sent. The
+included [`Caddyfile`](Caddyfile) does this with `{client_ip}`. Without the
+header every client shares one key (`unknown`), so all signups together count
+against one daily cap of 10. Never expose port 8787 directly; clients could
+then pick their own `CF-Connecting-IP`.
+
+If you use another proxy, it also has to pass WebSocket upgrades through on
+`/v1/socket`. For nginx:
+
+```nginx
+location / {
+    proxy_pass http://127.0.0.1:8787;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_set_header CF-Connecting-IP $remote_addr;
+    proxy_read_timeout 1h;
+}
+```
+
+### Backups and restore
+
+There is no point-in-time recovery outside Cloudflare, so back up the volume.
+Stop the server first so the SQLite files are consistent:
+
+```bash
+docker compose stop lume-cloud
+docker run --rm -v lume-cloud_lume-data:/data -v "$PWD":/backup debian:bookworm-slim \
+  tar czf /backup/lume-data-$(date +%F).tgz -C /data .
+docker compose start lume-cloud
+```
+
+Restore into an empty volume the same way with
+`tar xzf /backup/lume-data-….tgz -C /data`, then `chown -R 10001 /data` in the
+same throwaway container. A restore rewinds every account, so clients see
+older `seq`s and do a full resync.
+
+### Updating
+
+```bash
+git pull
+docker compose --profile caddy up -d --build
+```
+
+Data in the volume carries over. Accounts can also move between a Docker
+server and a Cloudflare one in either direction with
+[`migrate-account.mjs`](#moving-an-account-between-servers).
 
 ## PITR restore runbook
 
