@@ -1,0 +1,49 @@
+# Self-hosted Lume Cloud. See "Docker" in README.md.
+#
+#   cp .env.example .env            # then edit it
+#   docker compose up -d            # server only, on 127.0.0.1:8787
+#   docker compose --profile caddy up -d   # plus Caddy with automatic HTTPS
+
+# Fixed project name, so the data volume is always lume-cloud_lume-data.
+name: lume-cloud
+
+services:
+  lume-cloud:
+    build:
+      context: .
+      args:
+        VERSION: ${VERSION:-docker}
+    image: lume-cloud:latest
+    restart: unless-stopped
+    environment:
+      SIGNUP: ${SIGNUP:-invite}
+      INVITE_CODE: ${INVITE_CODE:-}
+    volumes:
+      - lume-data:/data
+    # Only reachable from this host. Put a TLS reverse proxy in front of it
+    # (the caddy profile below, or your own) that sets CF-Connecting-IP.
+    ports:
+      - "127.0.0.1:${PORT:-8787}:8787"
+
+  caddy:
+    image: caddy:2.10
+    profiles: [caddy]
+    restart: unless-stopped
+    depends_on:
+      lume-cloud:
+        condition: service_healthy
+    environment:
+      LUME_DOMAIN: ${LUME_DOMAIN:-}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  lume-data:
+  caddy-data:
+  caddy-config:
