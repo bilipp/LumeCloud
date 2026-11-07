@@ -128,7 +128,7 @@ Field names match the Apple mirror models. Optional fields may be absent or
 
 | `type` | Logical key | `data` fields |
 |---|---|---|
-| `playlist` | `playlist/<UUID>` | `id` (UUID), `name`, `serverURL`, `username`, `password`, `macAddress`, `sourceTypeRaw`, `epgURL?`, `syncEnabled` (bool), `hiddenTabsRaw`, `updatedAt` |
+| `playlist` | `playlist/<UUID>` | `id` (UUID), `name`, `serverURL`, `username`, `password`, `macAddress`, `sourceTypeRaw`, `epgURL?`, `syncEnabled` (bool), `hiddenTabsRaw`, `disabledContentRaw?` (absent in records written before it existed; read as `""`), `updatedAt` |
 | `content` | `content/<profileUUID>/<contentId>` | `contentId`, `kindRaw` (`movie`\|`series`\|`episode`\|`live`\|`category`), `profileID` (UUID), `watchProgress` (seconds, double), `isWatched`, `lastWatchedDate?`, `isFavorite`, `addedToWatchlistDate?`, `favoriteOrder?` (int), `isHidden`, `customOrder?` (int), `recommendationVoteRaw` (int: -1, 0 or 1), `updatedAt` |
 | `profile` | `profile/<UUID>` | `id`, `name`, `symbolName`, `colorRaw`, `createdAt`, `sortOrder` (int), `isChild` (bool), `updatedAt` |
 | `epgSource` | `epgSource/<UUID>` | `id`, `name`, `url`, `isEnabled`, `updatedAt` |

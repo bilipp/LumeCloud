@@ -3,6 +3,7 @@
     {
       "local" : {
         "data" : {
+          "disabledContentRaw" : "",
           "epgURL" : null,
           "hiddenTabsRaw" : "",
           "id" : "0A1B2C3D-0000-4000-8000-00000000AB01",
@@ -21,6 +22,7 @@
       },
       "merged" : {
         "data" : {
+          "disabledContentRaw" : "",
           "epgURL" : null,
           "hiddenTabsRaw" : "",
           "id" : "0A1B2C3D-0000-4000-8000-00000000AB01",
@@ -40,6 +42,7 @@
       "name" : "remote wins",
       "remote" : {
         "data" : {
+          "disabledContentRaw" : "",
           "epgURL" : null,
           "hiddenTabsRaw" : "",
           "id" : "0A1B2C3D-0000-4000-8000-00000000AB01",
@@ -423,6 +426,7 @@
   "reconcile" : [
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -434,6 +438,7 @@
       },
       "collection" : "playlist",
       "local" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -445,6 +450,7 @@
       },
       "name" : "unchanged on both sides",
       "remote" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -459,6 +465,7 @@
     },
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -470,6 +477,7 @@
       },
       "collection" : "playlist",
       "local" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -481,6 +489,7 @@
       },
       "name" : "local edit is pushed",
       "remote" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -491,6 +500,7 @@
         "username" : "viewer"
       },
       "value" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -504,6 +514,7 @@
     },
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -515,6 +526,7 @@
       },
       "collection" : "playlist",
       "local" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -526,6 +538,7 @@
       },
       "name" : "remote edit is pulled",
       "remote" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -536,6 +549,7 @@
         "username" : "viewer"
       },
       "value" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -549,6 +563,7 @@
     },
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -562,6 +577,7 @@
       "local" : null,
       "name" : "local deletion is pushed",
       "remote" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -576,6 +592,7 @@
     },
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -587,6 +604,7 @@
       },
       "collection" : "playlist",
       "local" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -605,6 +623,7 @@
       "base" : null,
       "collection" : "playlist",
       "local" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -617,6 +636,7 @@
       "name" : "created locally",
       "remote" : null,
       "value" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -634,6 +654,7 @@
       "local" : null,
       "name" : "created remotely",
       "remote" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -644,6 +665,7 @@
         "username" : "viewer"
       },
       "value" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -657,6 +679,7 @@
     },
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -668,6 +691,7 @@
       },
       "collection" : "playlist",
       "local" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -679,6 +703,7 @@
       },
       "name" : "same edit on both sides only re-baselines",
       "remote" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -689,6 +714,7 @@
         "username" : "viewer"
       },
       "value" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -702,6 +728,7 @@
     },
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -713,6 +740,7 @@
       },
       "collection" : "playlist",
       "local" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -724,6 +752,7 @@
       },
       "name" : "conflicting edits: remote wins",
       "remote" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -734,6 +763,7 @@
         "username" : "viewer"
       },
       "value" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -747,6 +777,7 @@
     },
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -758,6 +789,7 @@
       },
       "collection" : "playlist",
       "local" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -770,6 +802,7 @@
       "name" : "local edit survives a remote deletion",
       "remote" : null,
       "value" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -783,6 +816,7 @@
     },
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -796,6 +830,7 @@
       "local" : null,
       "name" : "remote edit survives a local deletion",
       "remote" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -806,6 +841,7 @@
         "username" : "viewer"
       },
       "value" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -819,6 +855,7 @@
     },
     {
       "base" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -839,6 +876,7 @@
       "base" : null,
       "collection" : "playlist",
       "local" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "",
         "macAddress" : "",
         "name" : "Harbor Lights (Home)",
@@ -850,6 +888,7 @@
       },
       "name" : "created differently on both sides: remote wins",
       "remote" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
@@ -860,6 +899,7 @@
         "username" : "viewer"
       },
       "value" : {
+        "disabledContentRaw" : "",
         "hiddenTabsRaw" : "series",
         "macAddress" : "",
         "name" : "Harbor Lights",
