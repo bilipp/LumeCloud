@@ -128,7 +128,7 @@ Field names match the Apple mirror models. Optional fields may be absent or
 
 | `type` | Logical key | `data` fields |
 |---|---|---|
-| `playlist` | `playlist/<UUID>` | `id` (UUID), `name`, `serverURL`, `username`, `password`, `macAddress`, `sourceTypeRaw`, `epgURL?`, `syncEnabled` (bool), `hiddenTabsRaw`, `updatedAt` |
+| `playlist` | `playlist/<UUID>` | `id` (UUID), `name`, `serverURL`, `username`, `password`, `macAddress`, `sourceTypeRaw`, `epgURL?`, `syncEnabled` (bool), `hiddenTabsRaw`, `combinedTypesRaw?`, `combinedPriority?` (int), `updatedAt` |
 | `content` | `content/<profileUUID>/<contentId>` | `contentId`, `kindRaw` (`movie`\|`series`\|`episode`\|`live`\|`category`), `profileID` (UUID), `watchProgress` (seconds, double), `isWatched`, `lastWatchedDate?`, `isFavorite`, `addedToWatchlistDate?`, `favoriteOrder?` (int), `isHidden`, `customOrder?` (int), `recommendationVoteRaw` (int: -1, 0 or 1), `updatedAt` |
 | `profile` | `profile/<UUID>` | `id`, `name`, `symbolName`, `colorRaw`, `createdAt`, `sortOrder` (int), `isChild` (bool), `updatedAt` |
 | `epgSource` | `epgSource/<UUID>` | `id`, `name`, `url`, `isEnabled`, `updatedAt` |
@@ -140,6 +140,19 @@ Field names match the Apple mirror models. Optional fields may be absent or
 
 In content keys, `<profileUUID>` is the literal `none` when `profileID` is
 nil (legacy records).
+
+`combinedTypesRaw` and `combinedPriority` are the playlist's place in the
+Combined view: the content types it contributes (comma-separated, from
+`movies`, `series`, `liveTV`, in that order; empty when it isn't a member)
+and its rank among the members. They were added after `playlist` first
+shipped, so:
+- A client leaves them out while they hold their defaults (`""` and `null`)
+  and the record's last-synced payload doesn't carry them. A playlist outside
+  Combined keeps its earlier bytes and never reads as changed.
+- Once a record carries them, a client always writes them, defaults included,
+  so leaving Combined reaches other devices.
+- A payload without them says nothing about them: a client applying it keeps
+  the values its own row holds. A new row starts outside Combined.
 
 ## 4. Endpoints
 
