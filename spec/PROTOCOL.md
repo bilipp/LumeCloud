@@ -128,7 +128,7 @@ Field names match the Apple mirror models. Optional fields may be absent or
 
 | `type` | Logical key | `data` fields |
 |---|---|---|
-| `playlist` | `playlist/<UUID>` | `id` (UUID), `name`, `serverURL`, `username`, `password`, `macAddress`, `sourceTypeRaw`, `epgURL?`, `syncEnabled` (bool), `hiddenTabsRaw`, `combinedTypesRaw?`, `combinedPriority?` (int), `updatedAt` |
+| `playlist` | `playlist/<UUID>` | `id` (UUID), `name`, `serverURL`, `username`, `password`, `macAddress`, `sourceTypeRaw`, `epgURL?`, `syncEnabled` (bool), `hiddenTabsRaw`, `combinedTypesRaw?`, `combinedPriority?` (int), `disabledContentRaw?`, `updatedAt` |
 | `content` | `content/<profileUUID>/<contentId>` | `contentId`, `kindRaw` (`movie`\|`series`\|`episode`\|`live`\|`category`), `profileID` (UUID), `watchProgress` (seconds, double), `isWatched`, `lastWatchedDate?`, `isFavorite`, `addedToWatchlistDate?`, `favoriteOrder?` (int), `isHidden`, `customOrder?` (int), `recommendationVoteRaw` (int: -1, 0 or 1), `updatedAt` |
 | `profile` | `profile/<UUID>` | `id`, `name`, `symbolName`, `colorRaw`, `createdAt`, `sortOrder` (int), `isChild` (bool), `updatedAt` |
 | `epgSource` | `epgSource/<UUID>` | `id`, `name`, `url`, `isEnabled`, `updatedAt` |
@@ -153,6 +153,13 @@ shipped, so:
   so leaving Combined reaches other devices.
 - A payload without them says nothing about them: a client applying it keeps
   the values its own row holds. A new row starts outside Combined.
+
+`disabledContentRaw` lists the content types the playlist doesn't fetch
+(comma-separated, from `movies`, `series`, `liveTV`, in that order; empty when
+it fetches everything). A client skips those types when it syncs the playlist
+and removes what it had fetched of them. It was added after `playlist` first
+shipped and follows the same three rules, with `""` as its default: a payload
+without it leaves the row's own value alone, and a new row fetches everything.
 
 ## 4. Endpoints
 
