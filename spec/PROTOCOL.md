@@ -128,7 +128,7 @@ Field names match the Apple mirror models. Optional fields may be absent or
 
 | `type` | Logical key | `data` fields |
 |---|---|---|
-| `playlist` | `playlist/<UUID>` | `id` (UUID), `name`, `serverURL`, `username`, `password`, `macAddress`, `sourceTypeRaw`, `epgURL?`, `syncEnabled` (bool), `hiddenTabsRaw`, `combinedTypesRaw?`, `combinedPriority?` (int), `updatedAt` |
+| `playlist` | `playlist/<UUID>` | `id` (UUID), `name`, `serverURL`, `username`, `password`, `macAddress`, `sourceTypeRaw`, `epgURL?`, `syncEnabled` (bool), `hiddenTabsRaw`, `combinedTypesRaw?`, `combinedPriority?` (int), `stalkerIdentityRequired?` (bool), `updatedAt` |
 | `content` | `content/<profileUUID>/<contentId>` | `contentId`, `kindRaw` (`movie`\|`series`\|`episode`\|`live`\|`category`), `profileID` (UUID), `watchProgress` (seconds, double), `isWatched`, `lastWatchedDate?`, `isFavorite`, `addedToWatchlistDate?`, `favoriteOrder?` (int), `isHidden`, `customOrder?` (int), `recommendationVoteRaw` (int: -1, 0 or 1), `updatedAt` |
 | `profile` | `profile/<UUID>` | `id`, `name`, `symbolName`, `colorRaw`, `createdAt`, `sortOrder` (int), `isChild` (bool), `updatedAt` |
 | `epgSource` | `epgSource/<UUID>` | `id`, `name`, `url`, `isEnabled`, `updatedAt` |
@@ -153,6 +153,18 @@ shipped, so:
   so leaving Combined reaches other devices.
 - A payload without them says nothing about them: a client applying it keeps
   the values its own row holds. A new row starts outside Combined.
+
+`stalkerIdentityRequired` marks a Stalker playlist whose advanced identity
+(serial, device IDs, signatures) is stored device-locally in protected
+storage and never synced. Clients never put advanced Stalker identity values
+or local Keychain references into Lume Cloud payloads. Like the Combined
+fields, it was added after `playlist` first shipped, so:
+- A client leaves it out while it holds its default (`false`) and the
+  record's last-synced payload doesn't carry it. Existing playlists keep
+  their earlier bytes and never read as changed.
+- Once a record carries it, a client always writes it, `false` included.
+- A payload without it says nothing about it: a client applying it keeps
+  the value its own row holds. A new row starts `false`.
 
 ## 4. Endpoints
 
