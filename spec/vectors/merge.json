@@ -430,6 +430,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -442,6 +443,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -454,6 +456,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -469,6 +472,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -481,6 +485,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -493,6 +498,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -504,6 +510,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -518,6 +525,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -530,6 +538,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -542,6 +551,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -553,6 +563,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -567,6 +578,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -581,6 +593,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -596,6 +609,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -608,6 +622,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -627,6 +642,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -640,6 +656,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -658,6 +675,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -669,6 +687,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -683,6 +702,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -695,6 +715,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -707,6 +728,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -718,6 +740,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -732,6 +755,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -744,6 +768,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -756,6 +781,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -767,6 +793,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -781,6 +808,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -793,6 +821,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -806,6 +835,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -820,6 +850,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -834,6 +865,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -845,6 +877,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -859,6 +892,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -880,6 +914,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -892,6 +927,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
@@ -903,6 +939,7 @@
         "password" : "secret",
         "serverURL" : "http://provider.example:8080",
         "sourceTypeRaw" : "xtream",
+        "stalkerIdentityRequired" : false,
         "syncEnabled" : true,
         "username" : "viewer"
       },
